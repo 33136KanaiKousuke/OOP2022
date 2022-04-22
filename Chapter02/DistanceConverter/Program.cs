@@ -8,7 +8,7 @@ namespace DistanceConverter {
     class Program {
         //コマンドライン引数
         static void Main(string[] args) {
-
+            
             if (args.Length >= 1 && args[0] == "-tom") {
                 //フィートからメートルへの対応表を出力
                 PrintToMeterList(1,10);
@@ -19,29 +19,23 @@ namespace DistanceConverter {
             }
 
         }
-        //フィートからメートルへの対応表を出力
-        private static void PrintToMeterList(int start, int stop) {
-            for (int feet = 1; feet <= 10; feet++) {
-                double meter = FeetToMeter(feet);
-                Console.WriteLine("{0}ft = {1:0.0000}m", feet, meter);
-            }
-        }
+
         //メートルからフィートへの対応表を出力
-        private static void PrintToFeetList(int start,int stop) {
+        private static void PrintToFeetList(int start, int stop) {
+            FeetConverter fc = new FeetConverter();
             for (int meter = 1; meter <= 10; meter++) {
-                double feet = MeterToFeet(meter);
+                double feet = fc.ToMeter(meter);
                 Console.WriteLine("{1:0.0000}m = {0}ft", meter, feet);
             }
         }
-
-        //フィートからメートルを求める
-        static double FeetToMeter(int feet) {
-            return feet * 0.3048;
+        //フィートからメートルへの対応表を出力
+        private static void PrintToMeterList(int start, int stop) {
+            FeetConverter fc = new FeetConverter();
+            for (int feet = 1; feet <= 10; feet++) {
+                double meter = fc.FromMeter(feet);
+                Console.WriteLine("{0}ft = {1:0.0000}m", feet, meter);
+            }
         }
-
-        //メートルからフィートを求める
-        static double MeterToFeet(int meter) {
-            return meter / 0.3048;
-        }
+        
     }
 }
