@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace DistanceConverter {
     //フィートとメールの単位変換
-    public class FeetConverter {
+    public static class FeetConverter {
         
-        //メートルからフィートを求める
-        public double ToMeter(double meter) {
+        //メートルからフィートを求める(静的メソッド)
+        public static double ToMeter(double meter) {
             return meter / 0.3048;
         }
 
-        //フィートからメートルを求める
-        public double FromMeter(double feet) {
+        //フィートからメートルを求める(静的メソッド)
+        public static double FromMeter(double feet) {
             return feet * 0.3048;
         }
     }
