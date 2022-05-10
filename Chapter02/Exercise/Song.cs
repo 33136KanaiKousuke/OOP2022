@@ -14,10 +14,10 @@ namespace Exercise {
         public int Length { get; set; }//演奏時間(秒)
 
         //引数付きコンストラクタ
-        public Song(string Title, string ArtistName, int Length) {
-            Title = "title";
-            ArtistName = "artistname";
-            Length = 150;
+        public Song(string title, string artistname, int length) {
+            Title = title;
+            ArtistName = artistname;
+            Length = length;
         }
 
     }
