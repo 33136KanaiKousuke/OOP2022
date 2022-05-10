@@ -7,8 +7,16 @@ using System.Threading.Tasks;
 namespace Exercise {
     class Program {
         static void Main(string[] args) {
-            List<Song> songs = new List<Song>();
+            
+            var songs = new List<Song>();
 
+            
+        }
+
+        //2.1.4
+        private static void PrintSongs(Song[] songs) {
+            
+            
         }
     }
 }
