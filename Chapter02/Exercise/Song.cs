@@ -13,5 +13,9 @@ namespace Exercise {
 
         public int Length { get; set; }//演奏時間
 
+        public Song(string Title, string ArtistName, int Length) {
+            
+        }
+
     }
 }
