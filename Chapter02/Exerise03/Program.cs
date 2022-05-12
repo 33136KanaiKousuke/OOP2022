@@ -10,27 +10,39 @@ namespace Exerise03 {
 
             var sales = new SalesCounter("sales.csv");
             var amountPerStore = sales.GetPerStoreSales();
-            
 
-            Console.WriteLine("売上高の表示選択");
-            Console.WriteLine("1.店舗別");
-            Console.WriteLine("2.商品カテゴリー別");
-            Console.Write(">");
-            int select = int.Parse(Console.ReadLine());
+            while (true) {
+                Console.WriteLine("売上高の表示選択");
+                Console.WriteLine("1.店舗別");
+                Console.WriteLine("2.商品カテゴリー別");
+                Console.Write(">");
+                int select = int.Parse(Console.ReadLine());
 
 
-            if (select == 1) {
-                amountPerStore = sales.GetPerStoreSales();
+                //if (select == 1) {
+                //    amountPerStore = sales.GetPerStoreSales();
+                //}
+                //else if (select == 2) {
+                //    amountPerStore = sales.GetPerCategorySales();
+                //}
+
+                switch (select) {
+                    case 1:
+                        OutPut(sales.GetPerStoreSales());
+                        break;
+                    case 2:
+                        OutPut(sales.GetPerCategorySales());
+                        break;
+                    case 999:
+                        return;
+                }
             }
-            else if (select == 2) {
-                amountPerStore = sales.GetPerCategorySales();
-            }
+        }
 
-
+        private static void OutPut(IDictionary<string,int> amountPerStore) {
             foreach (var obj in amountPerStore) {//KeyValuePairでDictionaryの中身を取り出す
                 Console.WriteLine("{0}{1}", obj.Key, obj.Value);
             }
-
         }
         
         
