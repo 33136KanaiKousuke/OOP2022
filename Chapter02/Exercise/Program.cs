@@ -24,9 +24,9 @@ namespace Exercise {
         }
 
         //2.1.4
-        private static void PrintSongs(Song[] songs) {
+        private static void PrintSongs(IEnumerable<Song> songs) {
             foreach (var song in songs) {
-                Console.WriteLine("{0},{1},{2}",song.Title,song.ArtistName,song.Length);
+                Console.WriteLine("{0},{1},{2:mm\\:ss}",song.Title,song.ArtistName, TimeSpan.FromSeconds(song.Length));
             }
             
         }
