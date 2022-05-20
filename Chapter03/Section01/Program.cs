@@ -15,8 +15,14 @@ namespace Section01 {
             //var exists = list.Exists(s => s[0] == 'A');
             //Console.WriteLine(exists);
 
-            var names = list.FindAll(s => s.Length <= 5);
-            names.ForEach(s => Console.WriteLine(s));
+            //var removeCount = list.RemoveAll(s => s.Contains("on"));
+            //Console.WriteLine(removeCount);
+            //list.ForEach(s => Console.WriteLine(s));
+
+            //list.ForEach(s => Console.WriteLine(s));
+
+            var lowerList = list.ConvertAll(s => s.ToLower());
+            lowerList.ForEach(s => Console.WriteLine(s));
 
             //foreach (var s in names) {
             //    Console.WriteLine(s);
