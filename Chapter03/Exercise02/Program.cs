@@ -30,8 +30,9 @@ namespace Exercise02 {
 
             do {
                 var line = Console.ReadLine();//入力取り込み
-                if (string.IsNullOrEmpty(line))
+                if (string.IsNullOrEmpty(line))//nullかどうか判定
                     break;
+
                 var index = names.FindIndex(s=> s == line);
                 Console.WriteLine(index);
                 
@@ -39,19 +40,28 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_2(List<string> names) {
-            var count = names.Count(s=> s.Contains("o"));
+            var count = names.Count(s=> s.Contains('o'));
             Console.WriteLine("oが含まれる都市名の数:"+count);
         }
 
         private static void Exercise2_3(List<string> names) {
-            var query = names.Where(s=> s.Contains("o"));
-            foreach (var item in query) {
-
+            string[] selected = names.Where(s=> s.Contains('o')).ToArray();//ToArray()で配列に変換
+            foreach (var name in selected) {
+                Console.WriteLine(name);
             }
         }
 
         private static void Exercise2_4(List<string> names) {
-            
+            var selected = names.Where(s => s.StartsWith("B")).Select(s=> new { s.Length, s});
+
+            foreach (var name in selected) {
+                Console.WriteLine(name.Length + name.s);
+            }
+
+            //foreach (var name in selected) {
+            //    Console.WriteLine(name+":"+name.Length);
+            //}
+
         }
     }
 }
