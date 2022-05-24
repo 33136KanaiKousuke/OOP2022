@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BADA4267-0676-45EF-A365-4DF2289810D5}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Exercise01</RootNamespace>
-    <AssemblyName>Exercise01</AssemblyName>
+    <ProjectGuid>{3CA14328-0045-44BA-A0C5-B79844F2628F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Exercise02</RootNamespace>
+    <AssemblyName>Exercise02</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,9 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,10 +45,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YearMonth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Exercise01\Exercise01.csproj">
+      <Project>{bada4267-0676-45ef-a365-4df2289810d5}</Project>
+      <Name>Exercise01</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
