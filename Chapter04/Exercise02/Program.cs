@@ -10,10 +10,10 @@ namespace Exercise02 {
         static void Main(string[] args) {
             //4.2.1(p103)
             var ymCollection = new YearMonth []{
-                new YearMonth(1990,3),
-                new YearMonth(2001,9),
+                new YearMonth(1900,3),
+                new YearMonth(2004,9),
                 new YearMonth(2005,8),
-                new YearMonth(2010,12),
+                new YearMonth(2010,11),
                 new YearMonth(2020,3),
             };
 
@@ -26,11 +26,13 @@ namespace Exercise02 {
 
             //4.2.4
             Exercise2_4(ymCollection);
-            Console.WriteLine("--------4.2.5-----------");
+            Console.WriteLine("--------4.2.5------------");
 
             //4.2.5
             Exercise2_5(ymCollection);
+            Console.WriteLine("--------4.2.6------------");
 
+            //4.2.6
             Exercise2_6(ymCollection);
 
             //var ym = new YearMonth(2002, 10);
@@ -40,12 +42,22 @@ namespace Exercise02 {
 
             //Console.WriteLine(ym);
         }
+
+        //4.2.6
         //降順に並べ替え
         private static void Exercise2_6(YearMonth[] ymCollection) {
-            foreach (var ym in ymCollection.OrderByDescending(ym => ym.Year)) {
+            //foreach (var ym in ymCollection.Where(ym => ym.Year%4 == 0&& (ym.Year % 100 != 0 || ym.Year % 400 == 0)).OrderBy(ym => ym.Year)) {
+            //    Console.WriteLine(ym);
+            //} 
+
+            foreach (var ym in ymCollection.OrderBy(ym => DateTime.IsLeapYear(ym.Year))) {
                 Console.WriteLine(ym);
-            } 
-            
+            }
+
+            var data = ymCollection.Max(ym=> ym.Month);
+            Console.WriteLine(data);
+
+
         }
 
         //4.2.3
@@ -60,12 +72,14 @@ namespace Exercise02 {
             return null;
         }
 
+        //4.2.2
         private static void Exercise2_2(YearMonth[] ymCollection) {
             foreach (var ym in ymCollection) {
                 Console.WriteLine(ym);
             }
         }
 
+        //4.2.4
         private static void Exercise2_4(YearMonth[] ymCollection) {
             var yearmonth = FindFirst21C(ymCollection);
             if (yearmonth != null) {
@@ -75,6 +89,7 @@ namespace Exercise02 {
             }
         }
 
+        //4.2.5
         private static void Exercise2_5(YearMonth[] ymCollection) {
             var array = ymCollection.Select(ym=>ym.AddOneMonth()).ToArray();
             foreach (var ym in array) {
