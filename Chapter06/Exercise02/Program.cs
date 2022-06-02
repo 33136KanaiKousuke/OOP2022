@@ -42,10 +42,11 @@ namespace Exercise02 {
 
         private static void Exercise2_1(List<Book> books) {
             //タイトル,ワンダフル・C#ライフの価格とページ数を表示
-            foreach (var item in collection) {
-
-            } var item = books.TakeWhile(s => s.Title == "ワンダフル・C#ライフ");
-            Console.WriteLine("{0},{1}");
+            var book = books.FirstOrDefault(b=>b.Title == "ワンダフル・C#ライフ");
+            if (book != null) {
+                Console.WriteLine("{0},{1}", book.Price, book.Pages);
+            }
+            
         }
 
         private static void Exercise2_2(List<Book> books) {
@@ -54,20 +55,25 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<Book> books) {
-            
+            var average = books.Where(s=> s.Title.Contains("C#")).Average(s=> s.Pages);
+            Console.WriteLine(average);
         }
 
         private static void Exercise2_4(List<Book> books) {
-            var index = books.FindIndex(s => s.Price > 4000);
-            
+            var book = books.FirstOrDefault(s => s.Price > 4000);
+            Console.WriteLine(book.Title);
         }
 
         private static void Exercise2_5(List<Book> books) {
-            var index = books.Where(s => s.Price < 4000).Max();
+            var page = books.Where(s => s.Price < 4000).Max(s => s.Pages);
+            Console.WriteLine(page);
+            
         }
 
         private static void Exercise2_6(List<Book> books) {
-            
+            foreach (var book in books.OrderByDescending(s => s.Pages<400)) {
+                Console.WriteLine("{0},{1}",book.Title,book.Price);
+            }
         }
 
         private static void Exercise2_7(List<Book> books) {
