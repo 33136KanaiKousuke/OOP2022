@@ -60,7 +60,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<Book> books) {
-            var book = books.FirstOrDefault(s => s.Price > 4000);
+            var book = books.FirstOrDefault(s => s.Price >= 4000);
             Console.WriteLine(book.Title);
         }
 
@@ -71,7 +71,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_6(List<Book> books) {
-            foreach (var book in books.Where(s => s.Pages > 400).OrderByDescending(s => s.Price)) {
+            foreach (var book in books.Where(s => s.Pages >= 400).OrderByDescending(s => s.Price)) {
                 Console.WriteLine("{0},{1}",book.Title,book.Price);
             }
         }
