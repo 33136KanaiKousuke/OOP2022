@@ -38,21 +38,35 @@ namespace Exercise01 {
 
         private static void Exercise1_3(int[] numbers) {
             //数値を文字列に変換
-            foreach (var item in numbers) {
-                var str = item.ToString();
-                Console.WriteLine(str);
+            //foreach (var item in numbers) {
+            //    var str = item.ToString();
+            //    Console.WriteLine(str);
+            //}
+
+            var items = numbers.Select(s => s.ToString());
+            foreach (var item in items) {
+                Console.WriteLine(item);
             }
         }
 
         private static void Exercise1_4(int[] numbers) {
             //小さい順に並べて先頭3つを出力
+            foreach (var item in numbers.OrderBy(s => s).Take(3)) {
+                Console.WriteLine(item);
+            }
+
+
         }
 
         private static void Exercise1_5(int[] numbers) {
             //重複排除後、10より大きい値をカウント
-            var results = numbers.Distinct();
-            var items = results.Where(s => s>10).Count();
-            Console.WriteLine(items);
+            //var results = numbers.Distinct();
+            //var items = results.Where(s => s>10).Count();
+            //Console.WriteLine(items);
+
+            var count = numbers.Distinct().Count(s=> s>10);
+            Console.WriteLine(count);
+
         }
     }
 }
