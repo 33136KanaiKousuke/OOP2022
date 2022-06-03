@@ -38,6 +38,21 @@ namespace Exercise02 {
             Console.WriteLine("-----");
 
             Exercise2_7(books);
+
+            Console.WriteLine("-----");
+
+            Exercise2_8(books);
+        }
+
+        private static void Exercise2_8(List<Book> books) {
+            //foreach (var item in books.Select((value, index) => new { value, index })) {
+            //    Console.WriteLine("{0}冊目:{1}", item.index+1, item.value.Title);
+            //}
+
+            foreach (var item in books.Select((b,i)=>new { i,b.Title})) {
+                Console.WriteLine((item.i+1)+"冊目:"+item.Title);
+            }
+
         }
 
         private static void Exercise2_1(List<Book> books) {
@@ -77,7 +92,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_7(List<Book> books) {
-            foreach (var book in books.Where(s => s.Title.Contains("C#") && s.Pages<=500)) {
+            foreach (var book in books.Where(s => s.Title.Contains("C#") && s.Pages <= 500)) {
                 Console.WriteLine(book.Title);
             }
         }
