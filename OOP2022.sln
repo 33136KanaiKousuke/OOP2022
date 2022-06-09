@@ -55,7 +55,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample0607", "FromAppSample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberGame", "FromAppSample\NumberGame\NumberGame.csproj", "{C0EE00DC-6977-4C77-8D20-4CCB4D8314DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddresBook", "FromAppSample\AddresBook\AddresBook.csproj", "{DA68E1E2-6F90-4E1F-A425-3E4188CAA85C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook", "FromAppSample\AddresBook\AddressBook.csproj", "{DA68E1E2-6F90-4E1F-A425-3E4188CAA85C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
