@@ -101,10 +101,13 @@ namespace AddresBook {
             // 
             this.dgvPrsons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrsons.Location = new System.Drawing.Point(41, 386);
+            this.dgvPrsons.MultiSelect = false;
             this.dgvPrsons.Name = "dgvPrsons";
             this.dgvPrsons.RowTemplate.Height = 21;
+            this.dgvPrsons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrsons.Size = new System.Drawing.Size(752, 187);
             this.dgvPrsons.TabIndex = 1;
+            this.dgvPrsons.Click += new System.EventHandler(this.dgvPrsons_Click);
             // 
             // tbName
             // 
