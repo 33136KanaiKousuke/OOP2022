@@ -43,6 +43,8 @@ namespace AddresBook {
             this.btPictureOpen = new System.Windows.Forms.Button();
             this.btPictureClear = new System.Windows.Forms.Button();
             this.ofdFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btUpdate = new System.Windows.Forms.Button();
+            this.btdelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
@@ -99,13 +101,15 @@ namespace AddresBook {
             // 
             // dgvPrsons
             // 
+            this.dgvPrsons.AllowUserToAddRows = false;
             this.dgvPrsons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrsons.Location = new System.Drawing.Point(41, 386);
             this.dgvPrsons.MultiSelect = false;
             this.dgvPrsons.Name = "dgvPrsons";
+            this.dgvPrsons.ReadOnly = true;
             this.dgvPrsons.RowTemplate.Height = 21;
             this.dgvPrsons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrsons.Size = new System.Drawing.Size(752, 187);
+            this.dgvPrsons.Size = new System.Drawing.Size(797, 187);
             this.dgvPrsons.TabIndex = 1;
             this.dgvPrsons.Click += new System.EventHandler(this.dgvPrsons_Click);
             // 
@@ -185,9 +189,9 @@ namespace AddresBook {
             // btAddPerson
             // 
             this.btAddPerson.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btAddPerson.Location = new System.Drawing.Point(630, 303);
+            this.btAddPerson.Location = new System.Drawing.Point(597, 291);
             this.btAddPerson.Name = "btAddPerson";
-            this.btAddPerson.Size = new System.Drawing.Size(119, 51);
+            this.btAddPerson.Size = new System.Drawing.Size(71, 51);
             this.btAddPerson.TabIndex = 4;
             this.btAddPerson.Text = "追加";
             this.btAddPerson.UseVisualStyleBackColor = true;
@@ -195,6 +199,7 @@ namespace AddresBook {
             // 
             // pbPicture
             // 
+            this.pbPicture.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.pbPicture.Location = new System.Drawing.Point(603, 51);
             this.pbPicture.Name = "pbPicture";
             this.pbPicture.Size = new System.Drawing.Size(133, 152);
@@ -204,7 +209,7 @@ namespace AddresBook {
             // 
             // btPictureOpen
             // 
-            this.btPictureOpen.Location = new System.Drawing.Point(593, 226);
+            this.btPictureOpen.Location = new System.Drawing.Point(597, 226);
             this.btPictureOpen.Name = "btPictureOpen";
             this.btPictureOpen.Size = new System.Drawing.Size(75, 23);
             this.btPictureOpen.TabIndex = 6;
@@ -226,14 +231,38 @@ namespace AddresBook {
             // 
             this.ofdFileOpenDialog.FileName = "openFileDialog1";
             // 
+            // btUpdate
+            // 
+            this.btUpdate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btUpdate.Location = new System.Drawing.Point(678, 291);
+            this.btUpdate.Name = "btUpdate";
+            this.btUpdate.Size = new System.Drawing.Size(71, 51);
+            this.btUpdate.TabIndex = 4;
+            this.btUpdate.Text = "更新";
+            this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
+            // 
+            // btdelete
+            // 
+            this.btdelete.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btdelete.Location = new System.Drawing.Point(763, 291);
+            this.btdelete.Name = "btdelete";
+            this.btdelete.Size = new System.Drawing.Size(75, 51);
+            this.btdelete.TabIndex = 7;
+            this.btdelete.Text = "削除";
+            this.btdelete.UseVisualStyleBackColor = true;
+            this.btdelete.Click += new System.EventHandler(this.btdelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 604);
+            this.Controls.Add(this.btdelete);
             this.Controls.Add(this.btPictureClear);
             this.Controls.Add(this.btPictureOpen);
             this.Controls.Add(this.pbPicture);
+            this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.btAddPerson);
             this.Controls.Add(this.cbOther);
             this.Controls.Add(this.cbWork);
@@ -279,6 +308,8 @@ namespace AddresBook {
         private System.Windows.Forms.Button btPictureOpen;
         private System.Windows.Forms.Button btPictureClear;
         private System.Windows.Forms.OpenFileDialog ofdFileOpenDialog;
+        private System.Windows.Forms.Button btUpdate;
+        private System.Windows.Forms.Button btdelete;
     }
 }
 

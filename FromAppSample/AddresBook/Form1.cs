@@ -62,6 +62,8 @@ namespace AddresBook {
 
         //データグリッドビューをクリックしたときのイベントハンドラ
         private void dgvPrsons_Click(object sender, EventArgs e) {
+            if (dgvPrsons.CurrentRow == null) return;
+
             //選択されているインデックスを取得する
             int row = dgvPrsons.CurrentRow.Index;
 
@@ -73,7 +75,7 @@ namespace AddresBook {
             tbCompany.Text = listPerson[row].Company;
             pbPicture.Image = listPerson[row].Picture;
 
-            checkLukitse1_MouseClick();
+            checkLukitse1_MouseClick();//チャックボックスの初期化
 
             foreach (var item in listPerson[row].listGroup) {
                 if (item == Person.GroupType.家族) {
@@ -91,11 +93,32 @@ namespace AddresBook {
             }
             
         }
+        //チェックを外す処理
         private void checkLukitse1_MouseClick() {
             cbFamily.Checked = false;
             cbFriend.Checked = false;
             cbWork.Checked = false;
             cbOther.Checked = false;
+        }
+
+        //更新ボタンが押された時の処理
+        private void btUpdate_Click(object sender, EventArgs e) {
+            int inbex = dgvPrsons.CurrentRow.Index;
+            listPerson[inbex].Name = tbName.Text;
+            listPerson[inbex].MailAddress = tbMailAddress.Text;
+            listPerson[inbex].Address = tbAddress.Text;
+            listPerson[inbex].Company = tbCompany.Text;
+            listPerson[inbex].listGroup = GetCheckBoxGroup();
+            listPerson[inbex].Picture = pbPicture.Image;
+
+            //データグリッドビューの更新
+            dgvPrsons.Refresh();
+
+        }
+
+        private void btdelete_Click(object sender, EventArgs e) {
+            int inbex = dgvPrsons.CurrentRow.Index;
+            listPerson.RemoveAt(inbex);
         }
     }
 }
