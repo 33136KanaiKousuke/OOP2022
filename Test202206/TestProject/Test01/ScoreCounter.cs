@@ -16,14 +16,19 @@ namespace Test01 {
 
         //メソッドの概要： 
         private static IEnumerable<Student> ReadScore(string filePath) {
-            
+            List<Student> scores = new List<Student>();
+            string[] lines = File.ReadAllLines(filePath);
+            foreach (string line in lines) {
+                string[] items = line.Split(',');
+                Student num = new Student {
+                    Name = items[0],
+                    Subject = items[1],
+                    Score = int.Parse(items[2])
 
-
-
-
-
-
-            
+                };
+                scores.Add(num);
+            }
+            return scores;
         }
 
         //メソッドの概要： 
