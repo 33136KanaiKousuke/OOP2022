@@ -33,12 +33,14 @@ namespace Test01 {
 
         //メソッドの概要： 
         public IDictionary<string, int> GetPerStudentScore() {
-
-
-
-
-
-            
+            var dict = new Dictionary<string, int>();
+            foreach (Student student in _score) {
+                if (dict.ContainsKey(student.Subject))
+                    dict[student.Subject] += student.Score;
+                else
+                    dict[student.Subject] = student.Score;
+            }
+            return dict;
         }
     }
 }
