@@ -25,6 +25,12 @@ namespace AddresBook {
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) {
+            if (String.IsNullOrEmpty(tbName.Text)) {
+                MessageBox.Show("名前が入力されていません。","エラー",
+                                MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
             Person newPerson = new Person {
                 Name = tbName.Text,
                 MailAddress = tbMailAddress.Text,
@@ -34,6 +40,11 @@ namespace AddresBook {
                 listGroup = GetCheckBoxGroup(),
             };
             listPerson.Add(newPerson);
+
+            if (listPerson.Count() > 0) {
+                
+            }
+
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -118,7 +129,15 @@ namespace AddresBook {
 
         private void btdelete_Click(object sender, EventArgs e) {
             int inbex = dgvPrsons.CurrentRow.Index;
-            listPerson.RemoveAt(inbex);
+            if (listPerson.Count() == 0) {
+                btdelete.Enabled = false;
+                btUpdate.Enabled = false;
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+            btdelete.Enabled = false;//削除ボタンをマスク
+            btUpdate.Enabled = false;//更新ボタンをマスク
         }
     }
 }

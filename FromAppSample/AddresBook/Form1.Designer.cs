@@ -102,6 +102,7 @@ namespace AddresBook {
             // dgvPrsons
             // 
             this.dgvPrsons.AllowUserToAddRows = false;
+            this.dgvPrsons.AllowUserToDeleteRows = false;
             this.dgvPrsons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrsons.Location = new System.Drawing.Point(41, 386);
             this.dgvPrsons.MultiSelect = false;
@@ -280,6 +281,7 @@ namespace AddresBook {
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "住所録アプリ";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.ResumeLayout(false);
