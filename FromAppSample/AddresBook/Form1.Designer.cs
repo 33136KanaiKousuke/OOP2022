@@ -45,6 +45,9 @@ namespace AddresBook {
             this.btUpdate = new System.Windows.Forms.Button();
             this.btdelete = new System.Windows.Forms.Button();
             this.cbCompany = new System.Windows.Forms.ComboBox();
+            this.btOpen = new System.Windows.Forms.Button();
+            this.btSave = new System.Windows.Forms.Button();
+            this.sfdSaveDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
@@ -104,13 +107,13 @@ namespace AddresBook {
             this.dgvPrsons.AllowUserToAddRows = false;
             this.dgvPrsons.AllowUserToDeleteRows = false;
             this.dgvPrsons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrsons.Location = new System.Drawing.Point(41, 386);
+            this.dgvPrsons.Location = new System.Drawing.Point(93, 386);
             this.dgvPrsons.MultiSelect = false;
             this.dgvPrsons.Name = "dgvPrsons";
             this.dgvPrsons.ReadOnly = true;
             this.dgvPrsons.RowTemplate.Height = 21;
             this.dgvPrsons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrsons.Size = new System.Drawing.Size(797, 187);
+            this.dgvPrsons.Size = new System.Drawing.Size(745, 187);
             this.dgvPrsons.TabIndex = 1;
             this.dgvPrsons.Click += new System.EventHandler(this.dgvPrsons_Click);
             // 
@@ -255,11 +258,35 @@ namespace AddresBook {
             this.cbCompany.Size = new System.Drawing.Size(398, 32);
             this.cbCompany.TabIndex = 8;
             // 
+            // btOpen
+            // 
+            this.btOpen.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btOpen.Location = new System.Drawing.Point(12, 418);
+            this.btOpen.Name = "btOpen";
+            this.btOpen.Size = new System.Drawing.Size(75, 38);
+            this.btOpen.TabIndex = 9;
+            this.btOpen.Text = "開く";
+            this.btOpen.UseVisualStyleBackColor = true;
+            this.btOpen.Click += new System.EventHandler(this.btOpen_Click);
+            // 
+            // btSave
+            // 
+            this.btSave.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btSave.Location = new System.Drawing.Point(12, 477);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(75, 41);
+            this.btSave.TabIndex = 10;
+            this.btSave.Text = "保存";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 604);
+            this.Controls.Add(this.btSave);
+            this.Controls.Add(this.btOpen);
             this.Controls.Add(this.cbCompany);
             this.Controls.Add(this.btdelete);
             this.Controls.Add(this.btPictureClear);
@@ -313,6 +340,9 @@ namespace AddresBook {
         private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button btdelete;
         private System.Windows.Forms.ComboBox cbCompany;
+        private System.Windows.Forms.Button btOpen;
+        private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.SaveFileDialog sfdSaveDialog;
     }
 }
 

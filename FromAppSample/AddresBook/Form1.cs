@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,7 +30,7 @@ namespace AddresBook {
             //氏名が入力されていない場合は未登録
             if (String.IsNullOrWhiteSpace(tbName.Text)) {
                 MessageBox.Show("氏名が入力されていません。", "エラー",
-                                MessageBoxButtons.OK,MessageBoxIcon.Error);
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -47,11 +49,15 @@ namespace AddresBook {
                 btUpdate.Enabled = true;
             }
 
-            //コンボボックスに会社を登録する
-            if (!cbCompany.Items.Contains(cbCompany.Text)) {//コンボボックスが未登録なら登録処理
+            setCbCompany(cbCompany.Text);
+
+        }
+
+        //コンボボックスに会社を登録する
+        private void setCbCompany(string company) {
+            if (!cbCompany.Items.Contains(company)) {//コンボボックスが未登録なら登録処理
                 cbCompany.Items.Add(cbCompany.Text);
             }
-
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -137,6 +143,7 @@ namespace AddresBook {
         //削除ボタンが押された時の処理
         private void btdelete_Click(object sender, EventArgs e) {
             int inbex = dgvPrsons.CurrentRow.Index;
+            listPerson.Remove(listPerson[inbex]);
             if (listPerson.Count() == 0) {
                 btdelete.Enabled = false;
                 btUpdate.Enabled = false;
@@ -148,5 +155,47 @@ namespace AddresBook {
             btUpdate.Enabled = false;//更新ボタンをマスク
         }
 
+        //保存ボタンのイベントハンドラ
+        private void btSave_Click(object sender, EventArgs e) {
+            if (sfdSaveDialog.ShowDialog() == DialogResult.OK) {
+                try {
+
+                    //バイナリ形式でシリアル化
+                    var bf = new BinaryFormatter();
+
+                    using (FileStream fs = File.Open(sfdSaveDialog.FileName,FileMode.Create)) {
+                        bf.Serialize(fs,listPerson);
+                    }
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btOpen_Click(object sender, EventArgs e) {
+            if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
+                try {
+
+                    //バイナリ形式でシリアル化
+                    var bf = new BinaryFormatter();
+
+                    using (FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open,FileAccess.Read)) {
+                        //逆シリアル化して読み込む
+                        listPerson = (BindingList<Person>)bf.Deserialize(fs);
+                        dgvPrsons.DataSource = null;
+                        dgvPrsons.DataSource = listPerson;
+                    }
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+
+                foreach (var item in listPerson) {
+                    setCbCompany(item.Company);//存在する会社を登録
+                }
+
+            }
+        }
     }
 }
