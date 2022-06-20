@@ -25,8 +25,9 @@ namespace AddresBook {
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) {
-            if (String.IsNullOrEmpty(tbName.Text)) {
-                MessageBox.Show("名前が入力されていません。","エラー",
+            //氏名が入力されていない場合は未登録
+            if (String.IsNullOrWhiteSpace(tbName.Text)) {
+                MessageBox.Show("氏名が入力されていません。", "エラー",
                                 MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
@@ -35,14 +36,20 @@ namespace AddresBook {
                 Name = tbName.Text,
                 MailAddress = tbMailAddress.Text,
                 Address = tbAddress.Text,
-                Company = tbCompany.Text,
+                Company = cbCompany.Text,
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup(),
             };
             listPerson.Add(newPerson);
 
             if (listPerson.Count() > 0) {
-                
+                btdelete.Enabled = true;
+                btUpdate.Enabled = true;
+            }
+
+            //コンボボックスに会社を登録する
+            if (!cbCompany.Items.Contains(cbCompany.Text)) {//コンボボックスが未登録なら登録処理
+                cbCompany.Items.Add(cbCompany.Text);
             }
 
         }
@@ -83,7 +90,7 @@ namespace AddresBook {
             tbName.Text = listPerson[row].Name;
             tbMailAddress.Text = listPerson[row].MailAddress;
             tbAddress.Text = listPerson[row].Address;
-            tbCompany.Text = listPerson[row].Company;
+            cbCompany.Text = listPerson[row].Company;
             pbPicture.Image = listPerson[row].Picture;
 
             checkLukitse1_MouseClick();//チャックボックスの初期化
@@ -118,7 +125,7 @@ namespace AddresBook {
             listPerson[inbex].Name = tbName.Text;
             listPerson[inbex].MailAddress = tbMailAddress.Text;
             listPerson[inbex].Address = tbAddress.Text;
-            listPerson[inbex].Company = tbCompany.Text;
+            listPerson[inbex].Company = cbCompany.Text;
             listPerson[inbex].listGroup = GetCheckBoxGroup();
             listPerson[inbex].Picture = pbPicture.Image;
 
@@ -127,6 +134,7 @@ namespace AddresBook {
 
         }
 
+        //削除ボタンが押された時の処理
         private void btdelete_Click(object sender, EventArgs e) {
             int inbex = dgvPrsons.CurrentRow.Index;
             if (listPerson.Count() == 0) {
@@ -139,5 +147,6 @@ namespace AddresBook {
             btdelete.Enabled = false;//削除ボタンをマスク
             btUpdate.Enabled = false;//更新ボタンをマスク
         }
+
     }
 }
