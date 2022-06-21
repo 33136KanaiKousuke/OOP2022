@@ -39,18 +39,18 @@ namespace AddresBook {
                 MailAddress = tbMailAddress.Text,
                 Address = tbAddress.Text,
                 Company = cbCompany.Text,
+                Registration = dtpRegistDate.Value,
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup(),
             };
             listPerson.Add(newPerson);
+            
 
-            //if (listPerson.Count() > 0) {
-            //    btdelete.Enabled = true;
-            //    btUpdate.Enabled = true;
-            //}
             EnableCheck();//マスク処理呼び出し
 
             setCbCompany(cbCompany.Text);
+
+            String Registrationd = dtpRegistDate.Value.ToString();
 
         }
 
@@ -99,6 +99,7 @@ namespace AddresBook {
             tbAddress.Text = listPerson[row].Address;
             cbCompany.Text = listPerson[row].Company;
             pbPicture.Image = listPerson[row].Picture;
+            dtpRegistDate.Value = listPerson[row].Registration.Year > 1900? listPerson[row].Registration:DateTime.Today;
 
             checkLukitse1_MouseClick();//チャックボックスの初期化
 
@@ -133,6 +134,7 @@ namespace AddresBook {
             listPerson[inbex].MailAddress = tbMailAddress.Text;
             listPerson[inbex].Address = tbAddress.Text;
             listPerson[inbex].Company = cbCompany.Text;
+            listPerson[inbex].Registration = dtpRegistDate.Value;
             listPerson[inbex].listGroup = GetCheckBoxGroup();
             listPerson[inbex].Picture = pbPicture.Image;
 

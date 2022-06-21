@@ -48,6 +48,8 @@ namespace AddresBook {
             this.btOpen = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.sfdSaveDialog = new System.Windows.Forms.SaveFileDialog();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dtpRegistDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
@@ -96,7 +98,7 @@ namespace AddresBook {
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(71, 326);
+            this.label5.Location = new System.Drawing.Point(71, 304);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 27);
             this.label5.TabIndex = 0;
@@ -107,13 +109,13 @@ namespace AddresBook {
             this.dgvPrsons.AllowUserToAddRows = false;
             this.dgvPrsons.AllowUserToDeleteRows = false;
             this.dgvPrsons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrsons.Location = new System.Drawing.Point(93, 386);
+            this.dgvPrsons.Location = new System.Drawing.Point(93, 349);
             this.dgvPrsons.MultiSelect = false;
             this.dgvPrsons.Name = "dgvPrsons";
             this.dgvPrsons.ReadOnly = true;
             this.dgvPrsons.RowTemplate.Height = 21;
             this.dgvPrsons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrsons.Size = new System.Drawing.Size(745, 187);
+            this.dgvPrsons.Size = new System.Drawing.Size(745, 191);
             this.dgvPrsons.TabIndex = 1;
             this.dgvPrsons.Click += new System.EventHandler(this.dgvPrsons_Click);
             // 
@@ -145,7 +147,7 @@ namespace AddresBook {
             // cbFamily
             // 
             this.cbFamily.AutoSize = true;
-            this.cbFamily.Location = new System.Drawing.Point(209, 326);
+            this.cbFamily.Location = new System.Drawing.Point(184, 314);
             this.cbFamily.Name = "cbFamily";
             this.cbFamily.Size = new System.Drawing.Size(48, 16);
             this.cbFamily.TabIndex = 3;
@@ -155,7 +157,7 @@ namespace AddresBook {
             // cbFriend
             // 
             this.cbFriend.AutoSize = true;
-            this.cbFriend.Location = new System.Drawing.Point(302, 326);
+            this.cbFriend.Location = new System.Drawing.Point(271, 314);
             this.cbFriend.Name = "cbFriend";
             this.cbFriend.Size = new System.Drawing.Size(48, 16);
             this.cbFriend.TabIndex = 3;
@@ -165,7 +167,7 @@ namespace AddresBook {
             // cbWork
             // 
             this.cbWork.AutoSize = true;
-            this.cbWork.Location = new System.Drawing.Point(385, 326);
+            this.cbWork.Location = new System.Drawing.Point(358, 314);
             this.cbWork.Name = "cbWork";
             this.cbWork.Size = new System.Drawing.Size(48, 16);
             this.cbWork.TabIndex = 3;
@@ -175,7 +177,7 @@ namespace AddresBook {
             // cbOther
             // 
             this.cbOther.AutoSize = true;
-            this.cbOther.Location = new System.Drawing.Point(459, 326);
+            this.cbOther.Location = new System.Drawing.Point(450, 314);
             this.cbOther.Name = "cbOther";
             this.cbOther.Size = new System.Drawing.Size(55, 16);
             this.cbOther.TabIndex = 3;
@@ -185,7 +187,7 @@ namespace AddresBook {
             // btAddPerson
             // 
             this.btAddPerson.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btAddPerson.Location = new System.Drawing.Point(597, 291);
+            this.btAddPerson.Location = new System.Drawing.Point(597, 280);
             this.btAddPerson.Name = "btAddPerson";
             this.btAddPerson.Size = new System.Drawing.Size(71, 51);
             this.btAddPerson.TabIndex = 4;
@@ -230,7 +232,7 @@ namespace AddresBook {
             // btUpdate
             // 
             this.btUpdate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btUpdate.Location = new System.Drawing.Point(678, 291);
+            this.btUpdate.Location = new System.Drawing.Point(678, 280);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(71, 51);
             this.btUpdate.TabIndex = 4;
@@ -241,7 +243,7 @@ namespace AddresBook {
             // btdelete
             // 
             this.btdelete.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btdelete.Location = new System.Drawing.Point(763, 291);
+            this.btdelete.Location = new System.Drawing.Point(763, 280);
             this.btdelete.Name = "btdelete";
             this.btdelete.Size = new System.Drawing.Size(75, 51);
             this.btdelete.TabIndex = 7;
@@ -280,11 +282,29 @@ namespace AddresBook {
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(585, 556);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 12);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "登録日：";
+            // 
+            // dtpRegistDate
+            // 
+            this.dtpRegistDate.Location = new System.Drawing.Point(638, 551);
+            this.dtpRegistDate.Name = "dtpRegistDate";
+            this.dtpRegistDate.Size = new System.Drawing.Size(200, 19);
+            this.dtpRegistDate.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 604);
+            this.Controls.Add(this.dtpRegistDate);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.btOpen);
             this.Controls.Add(this.cbCompany);
@@ -343,6 +363,8 @@ namespace AddresBook {
         private System.Windows.Forms.Button btOpen;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.SaveFileDialog sfdSaveDialog;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dtpRegistDate;
     }
 }
 
