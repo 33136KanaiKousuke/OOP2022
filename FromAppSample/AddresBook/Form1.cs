@@ -44,10 +44,11 @@ namespace AddresBook {
             };
             listPerson.Add(newPerson);
 
-            if (listPerson.Count() > 0) {
-                btdelete.Enabled = true;
-                btUpdate.Enabled = true;
-            }
+            //if (listPerson.Count() > 0) {
+            //    btdelete.Enabled = true;
+            //    btUpdate.Enabled = true;
+            //}
+            EnableCheck();//マスク処理呼び出し
 
             setCbCompany(cbCompany.Text);
 
@@ -56,7 +57,7 @@ namespace AddresBook {
         //コンボボックスに会社を登録する
         private void setCbCompany(string company) {
             if (!cbCompany.Items.Contains(company)) {//コンボボックスが未登録なら登録処理
-                cbCompany.Items.Add(cbCompany.Text);
+                cbCompany.Items.Add(company);
             }
         }
 
@@ -144,15 +145,16 @@ namespace AddresBook {
         private void btdelete_Click(object sender, EventArgs e) {
             int inbex = dgvPrsons.CurrentRow.Index;
             listPerson.Remove(listPerson[inbex]);
-            if (listPerson.Count() == 0) {
-                btdelete.Enabled = false;
-                btUpdate.Enabled = false;
-            }
+            EnableCheck();//マスク処理呼び出し
+        }
+
+        //更新削除ボタンのマスク処理を行う（マスク判定も含む）
+        private void EnableCheck() {
+            btdelete.Enabled = btUpdate.Enabled = listPerson.Count() > 0 ? true : false;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            btdelete.Enabled = false;//削除ボタンをマスク
-            btUpdate.Enabled = false;//更新ボタンをマスク
+            EnableCheck();//マスク処理呼び出し
         }
 
         //保存ボタンのイベントハンドラ
@@ -173,6 +175,7 @@ namespace AddresBook {
             }
         }
 
+        //開くボタンのイベントハンドラ
         private void btOpen_Click(object sender, EventArgs e) {
             if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
                 try {
@@ -194,6 +197,8 @@ namespace AddresBook {
                 foreach (var item in listPerson) {
                     setCbCompany(item.Company);//存在する会社を登録
                 }
+
+                EnableCheck();//マスク処理呼び出し
 
             }
         }
