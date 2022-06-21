@@ -194,6 +194,7 @@ namespace AddresBook {
                     MessageBox.Show(ex.Message);
                 }
 
+                cbCompany.Items.Clear();//コンボボックスの初期化
                 foreach (var item in listPerson) {
                     setCbCompany(item.Company);//存在する会社を登録
                 }
