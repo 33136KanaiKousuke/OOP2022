@@ -40,6 +40,7 @@ namespace AddresBook {
                 Address = tbAddress.Text,
                 Company = cbCompany.Text,
                 Registration = dtpRegistDate.Value,
+                TelNumber = tbTelNumber.Text,
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup(),
             };
@@ -49,8 +50,6 @@ namespace AddresBook {
             EnableCheck();//マスク処理呼び出し
 
             setCbCompany(cbCompany.Text);
-
-            String Registrationd = dtpRegistDate.Value.ToString();
 
         }
 
@@ -100,6 +99,7 @@ namespace AddresBook {
             cbCompany.Text = listPerson[row].Company;
             pbPicture.Image = listPerson[row].Picture;
             dtpRegistDate.Value = listPerson[row].Registration.Year > 1900? listPerson[row].Registration:DateTime.Today;
+            tbTelNumber.Text = listPerson[row].TelNumber;
 
             checkLukitse1_MouseClick();//チャックボックスの初期化
 
@@ -135,6 +135,7 @@ namespace AddresBook {
             listPerson[inbex].Address = tbAddress.Text;
             listPerson[inbex].Company = cbCompany.Text;
             listPerson[inbex].Registration = dtpRegistDate.Value;
+            listPerson[inbex].TelNumber = tbTelNumber.Text;
             listPerson[inbex].listGroup = GetCheckBoxGroup();
             listPerson[inbex].Picture = pbPicture.Image;
 

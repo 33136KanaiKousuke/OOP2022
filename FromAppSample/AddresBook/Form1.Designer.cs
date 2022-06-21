@@ -32,7 +32,7 @@ namespace AddresBook {
             this.dgvPrsons = new System.Windows.Forms.DataGridView();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbAddress = new System.Windows.Forms.TextBox();
-            this.tbMailAddress = new System.Windows.Forms.TextBox();
+            this.tbTelNumber = new System.Windows.Forms.TextBox();
             this.cbFamily = new System.Windows.Forms.CheckBox();
             this.cbFriend = new System.Windows.Forms.CheckBox();
             this.cbWork = new System.Windows.Forms.CheckBox();
@@ -50,8 +50,14 @@ namespace AddresBook {
             this.sfdSaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpRegistDate = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.KindNumber = new System.Windows.Forms.GroupBox();
+            this.Home = new System.Windows.Forms.RadioButton();
+            this.Mobile = new System.Windows.Forms.RadioButton();
+            this.tbMailAddress = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
+            this.KindNumber.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -88,7 +94,7 @@ namespace AddresBook {
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(102, 261);
+            this.label4.Location = new System.Drawing.Point(102, 244);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 27);
             this.label4.TabIndex = 0;
@@ -98,7 +104,7 @@ namespace AddresBook {
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(71, 304);
+            this.label5.Location = new System.Drawing.Point(71, 343);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 27);
             this.label5.TabIndex = 0;
@@ -109,13 +115,13 @@ namespace AddresBook {
             this.dgvPrsons.AllowUserToAddRows = false;
             this.dgvPrsons.AllowUserToDeleteRows = false;
             this.dgvPrsons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrsons.Location = new System.Drawing.Point(93, 349);
+            this.dgvPrsons.Location = new System.Drawing.Point(93, 383);
             this.dgvPrsons.MultiSelect = false;
             this.dgvPrsons.Name = "dgvPrsons";
             this.dgvPrsons.ReadOnly = true;
             this.dgvPrsons.RowTemplate.Height = 21;
             this.dgvPrsons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrsons.Size = new System.Drawing.Size(745, 191);
+            this.dgvPrsons.Size = new System.Drawing.Size(826, 191);
             this.dgvPrsons.TabIndex = 1;
             this.dgvPrsons.Click += new System.EventHandler(this.dgvPrsons_Click);
             // 
@@ -136,18 +142,18 @@ namespace AddresBook {
             this.tbAddress.Size = new System.Drawing.Size(398, 68);
             this.tbAddress.TabIndex = 2;
             // 
-            // tbMailAddress
+            // tbTelNumber
             // 
-            this.tbMailAddress.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbMailAddress.Location = new System.Drawing.Point(174, 108);
-            this.tbMailAddress.Name = "tbMailAddress";
-            this.tbMailAddress.Size = new System.Drawing.Size(398, 31);
-            this.tbMailAddress.TabIndex = 2;
+            this.tbTelNumber.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbTelNumber.Location = new System.Drawing.Point(174, 296);
+            this.tbTelNumber.Name = "tbTelNumber";
+            this.tbTelNumber.Size = new System.Drawing.Size(310, 31);
+            this.tbTelNumber.TabIndex = 2;
             // 
             // cbFamily
             // 
             this.cbFamily.AutoSize = true;
-            this.cbFamily.Location = new System.Drawing.Point(184, 314);
+            this.cbFamily.Location = new System.Drawing.Point(186, 355);
             this.cbFamily.Name = "cbFamily";
             this.cbFamily.Size = new System.Drawing.Size(48, 16);
             this.cbFamily.TabIndex = 3;
@@ -157,7 +163,7 @@ namespace AddresBook {
             // cbFriend
             // 
             this.cbFriend.AutoSize = true;
-            this.cbFriend.Location = new System.Drawing.Point(271, 314);
+            this.cbFriend.Location = new System.Drawing.Point(267, 355);
             this.cbFriend.Name = "cbFriend";
             this.cbFriend.Size = new System.Drawing.Size(48, 16);
             this.cbFriend.TabIndex = 3;
@@ -167,7 +173,7 @@ namespace AddresBook {
             // cbWork
             // 
             this.cbWork.AutoSize = true;
-            this.cbWork.Location = new System.Drawing.Point(358, 314);
+            this.cbWork.Location = new System.Drawing.Point(362, 354);
             this.cbWork.Name = "cbWork";
             this.cbWork.Size = new System.Drawing.Size(48, 16);
             this.cbWork.TabIndex = 3;
@@ -177,7 +183,7 @@ namespace AddresBook {
             // cbOther
             // 
             this.cbOther.AutoSize = true;
-            this.cbOther.Location = new System.Drawing.Point(450, 314);
+            this.cbOther.Location = new System.Drawing.Point(450, 354);
             this.cbOther.Name = "cbOther";
             this.cbOther.Size = new System.Drawing.Size(55, 16);
             this.cbOther.TabIndex = 3;
@@ -187,7 +193,7 @@ namespace AddresBook {
             // btAddPerson
             // 
             this.btAddPerson.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btAddPerson.Location = new System.Drawing.Point(597, 280);
+            this.btAddPerson.Location = new System.Drawing.Point(597, 327);
             this.btAddPerson.Name = "btAddPerson";
             this.btAddPerson.Size = new System.Drawing.Size(71, 51);
             this.btAddPerson.TabIndex = 4;
@@ -198,16 +204,16 @@ namespace AddresBook {
             // pbPicture
             // 
             this.pbPicture.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pbPicture.Location = new System.Drawing.Point(603, 51);
+            this.pbPicture.Location = new System.Drawing.Point(597, 86);
             this.pbPicture.Name = "pbPicture";
-            this.pbPicture.Size = new System.Drawing.Size(133, 152);
+            this.pbPicture.Size = new System.Drawing.Size(152, 152);
             this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPicture.TabIndex = 5;
             this.pbPicture.TabStop = false;
             // 
             // btPictureOpen
             // 
-            this.btPictureOpen.Location = new System.Drawing.Point(597, 226);
+            this.btPictureOpen.Location = new System.Drawing.Point(597, 244);
             this.btPictureOpen.Name = "btPictureOpen";
             this.btPictureOpen.Size = new System.Drawing.Size(75, 23);
             this.btPictureOpen.TabIndex = 6;
@@ -217,7 +223,7 @@ namespace AddresBook {
             // 
             // btPictureClear
             // 
-            this.btPictureClear.Location = new System.Drawing.Point(674, 226);
+            this.btPictureClear.Location = new System.Drawing.Point(674, 244);
             this.btPictureClear.Name = "btPictureClear";
             this.btPictureClear.Size = new System.Drawing.Size(75, 23);
             this.btPictureClear.TabIndex = 6;
@@ -232,7 +238,7 @@ namespace AddresBook {
             // btUpdate
             // 
             this.btUpdate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btUpdate.Location = new System.Drawing.Point(678, 280);
+            this.btUpdate.Location = new System.Drawing.Point(678, 326);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(71, 51);
             this.btUpdate.TabIndex = 4;
@@ -243,7 +249,7 @@ namespace AddresBook {
             // btdelete
             // 
             this.btdelete.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btdelete.Location = new System.Drawing.Point(763, 280);
+            this.btdelete.Location = new System.Drawing.Point(755, 325);
             this.btdelete.Name = "btdelete";
             this.btdelete.Size = new System.Drawing.Size(75, 51);
             this.btdelete.TabIndex = 7;
@@ -255,7 +261,7 @@ namespace AddresBook {
             // 
             this.cbCompany.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbCompany.FormattingEnabled = true;
-            this.cbCompany.Location = new System.Drawing.Point(174, 256);
+            this.cbCompany.Location = new System.Drawing.Point(174, 239);
             this.cbCompany.Name = "cbCompany";
             this.cbCompany.Size = new System.Drawing.Size(398, 32);
             this.cbCompany.TabIndex = 8;
@@ -263,7 +269,7 @@ namespace AddresBook {
             // btOpen
             // 
             this.btOpen.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btOpen.Location = new System.Drawing.Point(12, 418);
+            this.btOpen.Location = new System.Drawing.Point(12, 467);
             this.btOpen.Name = "btOpen";
             this.btOpen.Size = new System.Drawing.Size(75, 38);
             this.btOpen.TabIndex = 9;
@@ -274,7 +280,7 @@ namespace AddresBook {
             // btSave
             // 
             this.btSave.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btSave.Location = new System.Drawing.Point(12, 477);
+            this.btSave.Location = new System.Drawing.Point(12, 523);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(75, 41);
             this.btSave.TabIndex = 10;
@@ -285,7 +291,7 @@ namespace AddresBook {
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(585, 556);
+            this.label6.Location = new System.Drawing.Point(666, 595);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 12);
             this.label6.TabIndex = 11;
@@ -293,17 +299,71 @@ namespace AddresBook {
             // 
             // dtpRegistDate
             // 
-            this.dtpRegistDate.Location = new System.Drawing.Point(638, 551);
+            this.dtpRegistDate.Location = new System.Drawing.Point(719, 590);
             this.dtpRegistDate.Name = "dtpRegistDate";
             this.dtpRegistDate.Size = new System.Drawing.Size(200, 19);
             this.dtpRegistDate.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label7.Location = new System.Drawing.Point(48, 300);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 27);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "電話番号";
+            // 
+            // KindNumber
+            // 
+            this.KindNumber.Controls.Add(this.Mobile);
+            this.KindNumber.Controls.Add(this.Home);
+            this.KindNumber.Location = new System.Drawing.Point(490, 281);
+            this.KindNumber.Name = "KindNumber";
+            this.KindNumber.Size = new System.Drawing.Size(82, 67);
+            this.KindNumber.TabIndex = 13;
+            this.KindNumber.TabStop = false;
+            this.KindNumber.Text = "種別";
+            // 
+            // Home
+            // 
+            this.Home.AutoSize = true;
+            this.Home.Checked = true;
+            this.Home.Location = new System.Drawing.Point(6, 18);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(47, 16);
+            this.Home.TabIndex = 0;
+            this.Home.TabStop = true;
+            this.Home.Text = "自宅";
+            this.Home.UseVisualStyleBackColor = true;
+            // 
+            // Mobile
+            // 
+            this.Mobile.AutoSize = true;
+            this.Mobile.Location = new System.Drawing.Point(6, 45);
+            this.Mobile.Name = "Mobile";
+            this.Mobile.Size = new System.Drawing.Size(47, 16);
+            this.Mobile.TabIndex = 1;
+            this.Mobile.Text = "携帯";
+            this.Mobile.UseVisualStyleBackColor = true;
+            // 
+            // tbMailAddress
+            // 
+            this.tbMailAddress.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbMailAddress.Location = new System.Drawing.Point(174, 108);
+            this.tbMailAddress.Name = "tbMailAddress";
+            this.tbMailAddress.Size = new System.Drawing.Size(398, 31);
+            this.tbMailAddress.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 604);
+            this.ClientSize = new System.Drawing.Size(1018, 621);
+            this.Controls.Add(this.KindNumber);
             this.Controls.Add(this.dtpRegistDate);
+            this.Controls.Add(this.tbMailAddress);
+            this.Controls.Add(this.tbTelNumber);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.btOpen);
@@ -319,9 +379,9 @@ namespace AddresBook {
             this.Controls.Add(this.cbFriend);
             this.Controls.Add(this.cbFamily);
             this.Controls.Add(this.tbAddress);
-            this.Controls.Add(this.tbMailAddress);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.dgvPrsons);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -332,6 +392,8 @@ namespace AddresBook {
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
+            this.KindNumber.ResumeLayout(false);
+            this.KindNumber.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,7 +409,7 @@ namespace AddresBook {
         private System.Windows.Forms.DataGridView dgvPrsons;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbAddress;
-        private System.Windows.Forms.TextBox tbMailAddress;
+        private System.Windows.Forms.TextBox tbTelNumber;
         private System.Windows.Forms.CheckBox cbFamily;
         private System.Windows.Forms.CheckBox cbFriend;
         private System.Windows.Forms.CheckBox cbWork;
@@ -365,6 +427,11 @@ namespace AddresBook {
         private System.Windows.Forms.SaveFileDialog sfdSaveDialog;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpRegistDate;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox KindNumber;
+        private System.Windows.Forms.RadioButton Mobile;
+        private System.Windows.Forms.RadioButton Home;
+        private System.Windows.Forms.TextBox tbMailAddress;
     }
 }
 
