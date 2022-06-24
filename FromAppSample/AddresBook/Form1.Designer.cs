@@ -51,13 +51,13 @@ namespace AddresBook {
             this.label6 = new System.Windows.Forms.Label();
             this.dtpRegistDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.KindNumber = new System.Windows.Forms.GroupBox();
-            this.Home = new System.Windows.Forms.RadioButton();
-            this.Mobile = new System.Windows.Forms.RadioButton();
+            this.gbKindNumber = new System.Windows.Forms.GroupBox();
+            this.rbMobile = new System.Windows.Forms.RadioButton();
+            this.rbHome = new System.Windows.Forms.RadioButton();
             this.tbMailAddress = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
-            this.KindNumber.SuspendLayout();
+            this.gbKindNumber.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -314,38 +314,38 @@ namespace AddresBook {
             this.label7.TabIndex = 0;
             this.label7.Text = "電話番号";
             // 
-            // KindNumber
+            // gbKindNumber
             // 
-            this.KindNumber.Controls.Add(this.Mobile);
-            this.KindNumber.Controls.Add(this.Home);
-            this.KindNumber.Location = new System.Drawing.Point(490, 281);
-            this.KindNumber.Name = "KindNumber";
-            this.KindNumber.Size = new System.Drawing.Size(82, 67);
-            this.KindNumber.TabIndex = 13;
-            this.KindNumber.TabStop = false;
-            this.KindNumber.Text = "種別";
+            this.gbKindNumber.Controls.Add(this.rbMobile);
+            this.gbKindNumber.Controls.Add(this.rbHome);
+            this.gbKindNumber.Location = new System.Drawing.Point(490, 281);
+            this.gbKindNumber.Name = "gbKindNumber";
+            this.gbKindNumber.Size = new System.Drawing.Size(82, 67);
+            this.gbKindNumber.TabIndex = 13;
+            this.gbKindNumber.TabStop = false;
+            this.gbKindNumber.Text = "種別";
             // 
-            // Home
+            // rbMobile
             // 
-            this.Home.AutoSize = true;
-            this.Home.Checked = true;
-            this.Home.Location = new System.Drawing.Point(6, 18);
-            this.Home.Name = "Home";
-            this.Home.Size = new System.Drawing.Size(47, 16);
-            this.Home.TabIndex = 0;
-            this.Home.TabStop = true;
-            this.Home.Text = "自宅";
-            this.Home.UseVisualStyleBackColor = true;
+            this.rbMobile.AutoSize = true;
+            this.rbMobile.Location = new System.Drawing.Point(6, 45);
+            this.rbMobile.Name = "rbMobile";
+            this.rbMobile.Size = new System.Drawing.Size(47, 16);
+            this.rbMobile.TabIndex = 1;
+            this.rbMobile.Text = "携帯";
+            this.rbMobile.UseVisualStyleBackColor = true;
             // 
-            // Mobile
+            // rbHome
             // 
-            this.Mobile.AutoSize = true;
-            this.Mobile.Location = new System.Drawing.Point(6, 45);
-            this.Mobile.Name = "Mobile";
-            this.Mobile.Size = new System.Drawing.Size(47, 16);
-            this.Mobile.TabIndex = 1;
-            this.Mobile.Text = "携帯";
-            this.Mobile.UseVisualStyleBackColor = true;
+            this.rbHome.AutoSize = true;
+            this.rbHome.Checked = true;
+            this.rbHome.Location = new System.Drawing.Point(6, 18);
+            this.rbHome.Name = "rbHome";
+            this.rbHome.Size = new System.Drawing.Size(47, 16);
+            this.rbHome.TabIndex = 0;
+            this.rbHome.TabStop = true;
+            this.rbHome.Text = "自宅";
+            this.rbHome.UseVisualStyleBackColor = true;
             // 
             // tbMailAddress
             // 
@@ -360,7 +360,7 @@ namespace AddresBook {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 621);
-            this.Controls.Add(this.KindNumber);
+            this.Controls.Add(this.gbKindNumber);
             this.Controls.Add(this.dtpRegistDate);
             this.Controls.Add(this.tbMailAddress);
             this.Controls.Add(this.tbTelNumber);
@@ -392,8 +392,8 @@ namespace AddresBook {
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
-            this.KindNumber.ResumeLayout(false);
-            this.KindNumber.PerformLayout();
+            this.gbKindNumber.ResumeLayout(false);
+            this.gbKindNumber.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,9 +428,9 @@ namespace AddresBook {
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpRegistDate;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox KindNumber;
-        private System.Windows.Forms.RadioButton Mobile;
-        private System.Windows.Forms.RadioButton Home;
+        private System.Windows.Forms.GroupBox gbKindNumber;
+        private System.Windows.Forms.RadioButton rbMobile;
+        private System.Windows.Forms.RadioButton rbHome;
         private System.Windows.Forms.TextBox tbMailAddress;
     }
 }
