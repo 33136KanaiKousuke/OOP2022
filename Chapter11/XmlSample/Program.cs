@@ -14,7 +14,7 @@ namespace XmlSample {
                 var stream = wc.OpenRead("https://news.yahoo.co.jp/rss/categories/business.xml");
 
                 var xdoc = XDocument.Load(stream);
-                var xNews = xdoc.Root.Descendants("item").Select(s=> s.Element("title"));
+                var xNews = xdoc.Root.Descendants("item").Select(s=> (string)s.Element("title"));
 
                 foreach (var data in xNews) {
                     Console.WriteLine(data);
