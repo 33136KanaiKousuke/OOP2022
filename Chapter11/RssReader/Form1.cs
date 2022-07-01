@@ -12,8 +12,7 @@ using System.Net;
 
 namespace RssReader {
     public partial class Form1 : Form {
-        IEnumerable<string> xTitle;
-        IEnumerable<string> xLink;
+        IEnumerable<string> xTitle,xLink;
         public Form1() {
             InitializeComponent();
         }
@@ -33,13 +32,36 @@ namespace RssReader {
             }
         }
 
+        private void btBack_Click(object sender, EventArgs e) {
+            wvBrowser.GoBack();
+        }
+
+        private void btFoword_Click(object sender, EventArgs e) {
+            wvBrowser.GoForward();
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+            btBack.Enabled = wvBrowser.CanGoBack;
+            btFoward.Enabled = wvBrowser.CanGoBack;
+        }
+
+        private void wvBrowser_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e) {
+            btBack.Enabled = wvBrowser.CanGoBack;
+            btFoward.Enabled = wvBrowser.CanGoBack;
+        }
+
         private void lbRssTitle_MouseClick(object sender, MouseEventArgs e) {
-            int jndex = lbRssTitle.SelectedIndex;
+            int index = lbRssTitle.SelectedIndex;//選択したインデックスを取得(0～)
+            try {
+                var url = xLink.ElementAt(index);
+                wvBrowser.Navigate(url);
+                //wbBrowser.Url = new Uri(url);
+            }
+            catch (Exception ex) {
+                //MessageBox.Show(ex.Message);
+                MessageBox.Show("", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            //if () {
-
-            //}
-
+            }
         }
     }
 }
