@@ -5,15 +5,19 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
         BindingList<CarReport> listPerson = new BindingList<CarReport>();
-
+        int mode = 0;
+        Settings settings = new Settings();
         public Form1() {
             InitializeComponent();
             dgvPrsons.DataSource = listPerson;
@@ -35,13 +39,7 @@ namespace CarReportSystem {
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) {
-            //氏名が入力されていない場合は未登録
-            //if (String.IsNullOrWhiteSpace(cbAuther.Text)) {
-            //    MessageBox.Show("記録者が入力されていません。", "エラー",
-            //                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
+            
             CarReport newPerson = new CarReport {
                 Date = dtpRegistDate.Value,
                 Auther = cbAuther.Text,
@@ -222,15 +220,46 @@ namespace CarReportSystem {
             setMakerType(row);
         }
 
+        //変更したらSettingsにセット
         private void 色の設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             //色設定ダイアログの表示
             cdColorSelect.ShowDialog();
             BackColor = cdColorSelect.Color;
+
+            settings.MainForColor = BackColor;
         }
 
-        private void pbModeSelect_Click(object sender, EventArgs e) {
-            //pbPicture.SizeMode = (PictureBoxSizeMode)mode;
-            //mode = mode < 4 ? ++mode : 0;
+        private void pbModeSelect_Click_1(object sender, EventArgs e) {
+            pbPicture.SizeMode = (PictureBoxSizeMode)mode;
+            mode = mode < 4 ? ++mode : 0;
+        }
+
+        //設定ファイルのシリアル化
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            using (var set = XmlWriter.Create("settings.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(set, settings);
+            }
+            //using (var set = XmlWriter.Create("settings.xml")) {
+            //    var serializer = new DataContractSerializer(settings.GetType());
+            //    serializer.WriteObject(set, settings);
+            //}
+        }
+
+        //逆シリアル化
+        private void Form1_Load_1(object sender, EventArgs e) {
+            using (var set = XmlReader.Create("settings.xml")) {
+                var serializer = new XmlSerializer(typeof(Settings));
+                var setting = serializer.Deserialize(set) as Settings;
+                BackColor = setting.MainForColor;
+            }
+            //using (var set = XmlReader.Create("settings.xml")) {
+            //    var serializer = new DataContractSerializer(typeof(Settings));
+            //    var setting = serializer.ReadObject(set) as Settings;
+            //    BackColor = setting.MainForColor;
+            //}
+
+            EnableCheck();//マスク処理呼び出し
         }
     }
 }

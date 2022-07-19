@@ -131,7 +131,7 @@ namespace CarReportSystem {
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(697, 76);
+            this.label7.Location = new System.Drawing.Point(634, 76);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 21);
             this.label7.TabIndex = 1;
@@ -265,9 +265,9 @@ namespace CarReportSystem {
             // btPictureOpen
             // 
             this.btPictureOpen.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btPictureOpen.Location = new System.Drawing.Point(766, 79);
+            this.btPictureOpen.Location = new System.Drawing.Point(703, 79);
             this.btPictureOpen.Name = "btPictureOpen";
-            this.btPictureOpen.Size = new System.Drawing.Size(75, 23);
+            this.btPictureOpen.Size = new System.Drawing.Size(69, 23);
             this.btPictureOpen.TabIndex = 18;
             this.btPictureOpen.Text = "開く...";
             this.btPictureOpen.UseVisualStyleBackColor = true;
@@ -275,9 +275,9 @@ namespace CarReportSystem {
             // 
             // btPictureClear
             // 
-            this.btPictureClear.Location = new System.Drawing.Point(847, 79);
+            this.btPictureClear.Location = new System.Drawing.Point(778, 79);
             this.btPictureClear.Name = "btPictureClear";
-            this.btPictureClear.Size = new System.Drawing.Size(75, 23);
+            this.btPictureClear.Size = new System.Drawing.Size(65, 23);
             this.btPictureClear.TabIndex = 19;
             this.btPictureClear.Text = "削除";
             this.btPictureClear.UseVisualStyleBackColor = true;
@@ -385,30 +385,31 @@ namespace CarReportSystem {
             // 開くToolStripMenuItem
             // 
             this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            this.開くToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.開くToolStripMenuItem.Text = "開く";
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.保存ToolStripMenuItem.Text = "保存";
             // 
             // 色の設定ToolStripMenuItem
             // 
             this.色の設定ToolStripMenuItem.Name = "色の設定ToolStripMenuItem";
-            this.色の設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.色の設定ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.色の設定ToolStripMenuItem.Text = "色の設定";
             this.色の設定ToolStripMenuItem.Click += new System.EventHandler(this.色の設定ToolStripMenuItem_Click);
             // 
             // pbModeSelect
             // 
-            this.pbModeSelect.Location = new System.Drawing.Point(929, 79);
+            this.pbModeSelect.Location = new System.Drawing.Point(855, 79);
             this.pbModeSelect.Name = "pbModeSelect";
-            this.pbModeSelect.Size = new System.Drawing.Size(75, 23);
+            this.pbModeSelect.Size = new System.Drawing.Size(67, 23);
             this.pbModeSelect.TabIndex = 25;
-            this.pbModeSelect.Text = "button1";
+            this.pbModeSelect.Text = "★";
             this.pbModeSelect.UseVisualStyleBackColor = true;
+            this.pbModeSelect.Click += new System.EventHandler(this.pbModeSelect_Click_1);
             // 
             // Form1
             // 
@@ -442,6 +443,8 @@ namespace CarReportSystem {
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.gbMaker.ResumeLayout(false);
             this.gbMaker.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).EndInit();
