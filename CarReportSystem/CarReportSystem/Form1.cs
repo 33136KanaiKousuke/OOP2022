@@ -224,9 +224,9 @@ namespace CarReportSystem {
         private void 色の設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             //色設定ダイアログの表示
             cdColorSelect.ShowDialog();
-            BackColor = cdColorSelect.Color;
+            BackColor = cdColorSelect.Color;//背景色変更
 
-            settings.MainForColor = BackColor;
+            settings.MainForColor = BackColor.ToArgb();
         }
 
         private void pbModeSelect_Click_1(object sender, EventArgs e) {
@@ -240,6 +240,7 @@ namespace CarReportSystem {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(set, settings);
             }
+
             //using (var set = XmlWriter.Create("settings.xml")) {
             //    var serializer = new DataContractSerializer(settings.GetType());
             //    serializer.WriteObject(set, settings);
@@ -250,9 +251,10 @@ namespace CarReportSystem {
         private void Form1_Load_1(object sender, EventArgs e) {
             using (var set = XmlReader.Create("settings.xml")) {
                 var serializer = new XmlSerializer(typeof(Settings));
-                var setting = serializer.Deserialize(set) as Settings;
-                BackColor = setting.MainForColor;
+                settings = serializer.Deserialize(set) as Settings;
+                BackColor = Color.FromArgb(settings.MainForColor);
             }
+
             //using (var set = XmlReader.Create("settings.xml")) {
             //    var serializer = new DataContractSerializer(typeof(Settings));
             //    var setting = serializer.ReadObject(set) as Settings;

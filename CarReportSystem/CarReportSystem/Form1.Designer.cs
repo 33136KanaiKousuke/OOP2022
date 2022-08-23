@@ -379,25 +379,25 @@ namespace CarReportSystem {
             this.保存ToolStripMenuItem,
             this.色の設定ToolStripMenuItem});
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
-            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
             this.ファイルFToolStripMenuItem.Text = "ファイル(F)";
             // 
             // 開くToolStripMenuItem
             // 
             this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            this.開くToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.開くToolStripMenuItem.Text = "開く";
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.保存ToolStripMenuItem.Text = "保存";
             // 
             // 色の設定ToolStripMenuItem
             // 
             this.色の設定ToolStripMenuItem.Name = "色の設定ToolStripMenuItem";
-            this.色の設定ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.色の設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.色の設定ToolStripMenuItem.Text = "色の設定";
             this.色の設定ToolStripMenuItem.Click += new System.EventHandler(this.色の設定ToolStripMenuItem_Click);
             // 
