@@ -17,7 +17,7 @@ namespace CarReportSystem {
     public partial class Form1 : Form {
         BindingList<CarReport> listPerson = new BindingList<CarReport>();
         int mode = 0;
-        Settings settings = new Settings();
+        Settings settings = Settings.getInstance();
         public Form1() {
             InitializeComponent();
             dgvPrsons.DataSource = listPerson;
@@ -249,19 +249,19 @@ namespace CarReportSystem {
 
         //逆シリアル化
         private void Form1_Load_1(object sender, EventArgs e) {
-            using (var set = XmlReader.Create("settings.xml")) {
-                var serializer = new XmlSerializer(typeof(Settings));
-                settings = serializer.Deserialize(set) as Settings;
-                BackColor = Color.FromArgb(settings.MainForColor);
+            try {
+                using (var set = XmlReader.Create("settings.xml")) {
+                    var serializer = new XmlSerializer(typeof(Settings));
+                    settings = serializer.Deserialize(set) as Settings;
+                    BackColor = Color.FromArgb(settings.MainForColor);
+                }
             }
+            catch (Exception) {
 
-            //using (var set = XmlReader.Create("settings.xml")) {
-            //    var serializer = new DataContractSerializer(typeof(Settings));
-            //    var setting = serializer.ReadObject(set) as Settings;
-            //    BackColor = setting.MainForColor;
-            //}
-
-            EnableCheck();//マスク処理呼び出し
+            }
+            finally {
+                EnableCheck();//マスク処理呼び出し
+            }
         }
     }
 }
