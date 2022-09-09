@@ -40,6 +40,7 @@ namespace AddresBook {
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.addresTableBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.addresTableDataGridView = new System.Windows.Forms.DataGridView();
+            this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbAddress = new System.Windows.Forms.TextBox();
@@ -52,7 +53,13 @@ namespace AddresBook {
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btUpdate = new System.Windows.Forms.Button();
+            this.pbImage = new System.Windows.Forms.PictureBox();
+            this.btImageOpen = new System.Windows.Forms.Button();
+            this.btImageClear = new System.Windows.Forms.Button();
+            this.ofdImage = new System.Windows.Forms.OpenFileDialog();
             this.btAdd = new System.Windows.Forms.Button();
+            this.btSearchName = new System.Windows.Forms.Button();
+            this.tbSearchName = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,17 +70,12 @@ namespace AddresBook {
             this.infosys202212DataSet = new AddresBook.infosys202212DataSet();
             this.addresTableTableAdapter = new AddresBook.infosys202212DataSetTableAdapters.AddresTableTableAdapter();
             this.tableAdapterManager = new AddresBook.infosys202212DataSetTableAdapters.TableAdapterManager();
-            this.Image = new System.Windows.Forms.DataGridViewImageColumn();
-            this.pbImage = new System.Windows.Forms.PictureBox();
-            this.btImageOpen = new System.Windows.Forms.Button();
-            this.btImageClear = new System.Windows.Forms.Button();
-            this.ofdImage = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.addresTableBindingNavigator)).BeginInit();
             this.addresTableBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addresTableDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addresTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202212DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
             // addresTableBindingNavigator
@@ -225,6 +227,13 @@ namespace AddresBook {
             this.addresTableDataGridView.TabIndex = 1;
             this.addresTableDataGridView.Click += new System.EventHandler(this.addresTableDataGridView_Click);
             // 
+            // Image
+            // 
+            this.Image.DataPropertyName = "Image";
+            this.Image.HeaderText = "Image";
+            this.Image.Name = "Image";
+            this.Image.ReadOnly = true;
+            // 
             // tbName
             // 
             this.tbName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -338,16 +347,67 @@ namespace AddresBook {
             this.btUpdate.UseVisualStyleBackColor = true;
             this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
+            // pbImage
+            // 
+            this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImage.Location = new System.Drawing.Point(619, 56);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(105, 121);
+            this.pbImage.TabIndex = 6;
+            this.pbImage.TabStop = false;
+            // 
+            // btImageOpen
+            // 
+            this.btImageOpen.Location = new System.Drawing.Point(619, 183);
+            this.btImageOpen.Name = "btImageOpen";
+            this.btImageOpen.Size = new System.Drawing.Size(59, 23);
+            this.btImageOpen.TabIndex = 7;
+            this.btImageOpen.Text = "開く...";
+            this.btImageOpen.UseVisualStyleBackColor = true;
+            this.btImageOpen.Click += new System.EventHandler(this.btImageOpen_Click);
+            // 
+            // btImageClear
+            // 
+            this.btImageClear.Location = new System.Drawing.Point(684, 183);
+            this.btImageClear.Name = "btImageClear";
+            this.btImageClear.Size = new System.Drawing.Size(40, 23);
+            this.btImageClear.TabIndex = 7;
+            this.btImageClear.Text = "✕";
+            this.btImageClear.UseVisualStyleBackColor = true;
+            this.btImageClear.Click += new System.EventHandler(this.btImageClear_Click);
+            // 
+            // ofdImage
+            // 
+            this.ofdImage.FileName = "openFileDialog1";
+            // 
             // btAdd
             // 
             this.btAdd.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btAdd.Location = new System.Drawing.Point(800, 324);
+            this.btAdd.Location = new System.Drawing.Point(800, 330);
             this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(87, 39);
-            this.btAdd.TabIndex = 4;
+            this.btAdd.Size = new System.Drawing.Size(87, 42);
+            this.btAdd.TabIndex = 8;
             this.btAdd.Text = "追加";
             this.btAdd.UseVisualStyleBackColor = true;
-            this.btAdd.Click += new System.EventHandler(this.button1_Click);
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
+            // 
+            // btSearchName
+            // 
+            this.btSearchName.Location = new System.Drawing.Point(441, 260);
+            this.btSearchName.Name = "btSearchName";
+            this.btSearchName.Size = new System.Drawing.Size(75, 31);
+            this.btSearchName.TabIndex = 9;
+            this.btSearchName.Text = "名前検索";
+            this.btSearchName.UseVisualStyleBackColor = true;
+            this.btSearchName.Click += new System.EventHandler(this.btSearchName_Click);
+            // 
+            // tbSearchName
+            // 
+            this.tbSearchName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbSearchName.Location = new System.Drawing.Point(522, 260);
+            this.tbSearchName.Name = "tbSearchName";
+            this.tbSearchName.Size = new System.Drawing.Size(235, 31);
+            this.tbSearchName.TabIndex = 10;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -411,56 +471,18 @@ namespace AddresBook {
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.UpdateOrder = AddresBook.infosys202212DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // Image
-            // 
-            this.Image.DataPropertyName = "Image";
-            this.Image.HeaderText = "Image";
-            this.Image.Name = "Image";
-            this.Image.ReadOnly = true;
-            // 
-            // pbImage
-            // 
-            this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImage.Location = new System.Drawing.Point(619, 56);
-            this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(105, 121);
-            this.pbImage.TabIndex = 6;
-            this.pbImage.TabStop = false;
-            // 
-            // btImageOpen
-            // 
-            this.btImageOpen.Location = new System.Drawing.Point(619, 183);
-            this.btImageOpen.Name = "btImageOpen";
-            this.btImageOpen.Size = new System.Drawing.Size(59, 23);
-            this.btImageOpen.TabIndex = 7;
-            this.btImageOpen.Text = "開く...";
-            this.btImageOpen.UseVisualStyleBackColor = true;
-            this.btImageOpen.Click += new System.EventHandler(this.btImageOpen_Click);
-            // 
-            // btImageClear
-            // 
-            this.btImageClear.Location = new System.Drawing.Point(684, 183);
-            this.btImageClear.Name = "btImageClear";
-            this.btImageClear.Size = new System.Drawing.Size(40, 23);
-            this.btImageClear.TabIndex = 7;
-            this.btImageClear.Text = "✕";
-            this.btImageClear.UseVisualStyleBackColor = true;
-            this.btImageClear.Click += new System.EventHandler(this.btImageClear_Click);
-            // 
-            // ofdImage
-            // 
-            this.ofdImage.FileName = "openFileDialog1";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 533);
+            this.Controls.Add(this.tbSearchName);
+            this.Controls.Add(this.btSearchName);
+            this.Controls.Add(this.btAdd);
             this.Controls.Add(this.btImageClear);
             this.Controls.Add(this.btImageOpen);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.btUpdate);
-            this.Controls.Add(this.btAdd);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -481,9 +503,9 @@ namespace AddresBook {
             this.addresTableBindingNavigator.ResumeLayout(false);
             this.addresTableBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addresTableDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addresTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202212DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -527,12 +549,14 @@ namespace AddresBook {
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btUpdate;
-        private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.DataGridViewImageColumn Image;
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.Button btImageOpen;
         private System.Windows.Forms.Button btImageClear;
         private System.Windows.Forms.OpenFileDialog ofdImage;
+        private System.Windows.Forms.Button btAdd;
+        private System.Windows.Forms.Button btSearchName;
+        private System.Windows.Forms.TextBox tbSearchName;
     }
 }
 

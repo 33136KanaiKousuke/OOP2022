@@ -32,11 +32,31 @@ namespace AddresBook {
         }
 
         private void addresTableDataGridView_Click(object sender, EventArgs e) {
+            if (addresTableDataGridView.CurrentRow == null)
+                return;
+
+            //データぐっりどビューの選択コードをテキストボックスへ設定
             tbName.Text = addresTableDataGridView.CurrentRow.Cells[1].Value.ToString();
             tbAddress.Text = addresTableDataGridView.CurrentRow.Cells[2].Value.ToString();
             tbTel.Text = addresTableDataGridView.CurrentRow.Cells[3].Value.ToString();
             tbMail.Text = addresTableDataGridView.CurrentRow.Cells[4].Value.ToString();
             tbMemo.Text = addresTableDataGridView.CurrentRow.Cells[5].Value.ToString();
+
+            //画像表示処理
+            if (!(addresTableDataGridView.CurrentRow.Cells[6].Value is DBNull)) {
+                 pbImage.Image = ByteArrayToImage((byte[])addresTableDataGridView.CurrentRow.Cells[6].Value);
+            }
+            else {
+                pbImage.Image = null;
+            }
+
+            //try {
+            //    pbImage.Image = ByteArrayToImage((byte[])addresTableDataGridView.CurrentRow.Cells[6].Value);
+            //}
+            //catch (Exception) {
+            //    pbImage.Image = null;
+            //}
+
         }
 
         private void btUpdate_Click(object sender, EventArgs e) {
@@ -55,6 +75,7 @@ namespace AddresBook {
         }
 
         private void btImageOpen_Click(object sender, EventArgs e) {
+            ofdImage.Filter = "画像表示(*.jpg;*.pig;*.bmp)| *.jpg; *.pig; *.bmp";//フィルターのセット
             if (ofdImage.ShowDialog() == DialogResult.OK) {
                 pbImage.Image = System.Drawing.Image.FromFile(ofdImage.FileName);
             }
@@ -78,5 +99,19 @@ namespace AddresBook {
             return b;
         }
 
+        //データの追加
+        private void btAdd_Click(object sender, EventArgs e) {
+            DataRow newRow = infosys202212DataSet.AddresTable.NewRow();
+            newRow[1] = tbName.Text;
+            newRow[2] = tbAddress.Text;
+            //データセットへの新しいレコードを追加
+            infosys202212DataSet.AddresTable.Rows.Add(newRow);
+            //データベースの更新
+            this.addresTableTableAdapter.Update(this.infosys202212DataSet.AddresTable);
+        }
+
+        private void btSearchName_Click(object sender, EventArgs e) {
+            this.addresTableTableAdapter.FillByName(this.infosys202212DataSet.AddresTable,(tbSearchName.Text));
+        }
     }
 }
