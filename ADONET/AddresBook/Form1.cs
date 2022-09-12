@@ -104,14 +104,50 @@ namespace AddresBook {
             DataRow newRow = infosys202212DataSet.AddresTable.NewRow();
             newRow[1] = tbName.Text;
             newRow[2] = tbAddress.Text;
+            newRow[3] = tbTel.Text;
+            newRow[4] = tbMail.Text;
+            newRow[5] = tbMemo.Text;
+            newRow[6] = pbImage.Image;
             //データセットへの新しいレコードを追加
             infosys202212DataSet.AddresTable.Rows.Add(newRow);
             //データベースの更新
             this.addresTableTableAdapter.Update(this.infosys202212DataSet.AddresTable);
         }
 
+        //名前検索
         private void btSearchName_Click(object sender, EventArgs e) {
             this.addresTableTableAdapter.FillByName(this.infosys202212DataSet.AddresTable,(tbSearchName.Text));
+        }
+
+        //削除処理
+        private void btClear_Click(object sender, EventArgs e) {
+            tbName.Text = null;
+            tbAddress.Text = null;
+            tbTel.Text = null;
+            tbMail.Text = null;
+            tbMemo.Text = null;
+            pbImage.Image = null;
+            tbSearchName.Text = null;
+
+            this.addresTableTableAdapter.Fill(this.infosys202212DataSet.AddresTable);
+
+        }
+
+        private void データベース接続ToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.addresTableTableAdapter.Fill(this.infosys202212DataSet.AddresTable);
+        }
+
+        //エラー回避
+        private void addresTableDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+
+        }
+
+        private void バージョン情報ToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Version().ShowDialog();
+        }
+
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
         }
     }
 }
