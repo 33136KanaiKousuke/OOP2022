@@ -107,7 +107,7 @@ namespace AddresBook {
             newRow[3] = tbTel.Text;
             newRow[4] = tbMail.Text;
             newRow[5] = tbMemo.Text;
-            newRow[6] = pbImage.Image;
+            newRow[6] = ImageToByteArray(pbImage.Image);
             //データセットへの新しいレコードを追加
             infosys202212DataSet.AddresTable.Rows.Add(newRow);
             //データベースの更新
@@ -119,7 +119,7 @@ namespace AddresBook {
             this.addresTableTableAdapter.FillByName(this.infosys202212DataSet.AddresTable,(tbSearchName.Text));
         }
 
-        //削除処理
+        //クリア処理
         private void btClear_Click(object sender, EventArgs e) {
             tbName.Text = null;
             tbAddress.Text = null;
