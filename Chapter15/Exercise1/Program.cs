@@ -25,11 +25,18 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_2() {
-            
+            var max = Library.Books.Max(b => b.Price);//
+            var book = Library.Books.Where(b => b.Price == max);
+
+            Console.WriteLine(book);
         }
 
         private static void Exercise1_3() {
-            
+            var books = Library.Books.GroupBy(b => b.PublishedYear).OrderBy(b => b.Key);
+
+            foreach (var book in books) {
+                Console.WriteLine($"{book.Key}年 {book.Count()}冊");
+            }
         }
 
         private static void Exercise1_4() {
