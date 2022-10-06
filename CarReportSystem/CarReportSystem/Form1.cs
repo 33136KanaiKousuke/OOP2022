@@ -218,12 +218,13 @@ namespace CarReportSystem {
             tbReport.Text = carReportDbDataGridView.CurrentRow.Cells[5].Value.ToString();
 
             //画像表示処理
-            if (!(carReportDbDataGridView.CurrentRow.Cells[6].Value is DBNull)) {
+            try {
                 pbPicture.Image = ByteArrayToImage((byte[])carReportDbDataGridView.CurrentRow.Cells[6].Value);
             }
-            else {
+            catch (Exception ee) {
                 pbPicture.Image = null;
             }
+
         }
 
         //エラー回避

@@ -43,7 +43,6 @@ namespace CarReportSystem {
             this.rbToyota = new System.Windows.Forms.RadioButton();
             this.cbCarName = new System.Windows.Forms.ComboBox();
             this.tbReport = new System.Windows.Forms.TextBox();
-            this.dgvPrsons = new System.Windows.Forms.DataGridView();
             this.btPictureOpen = new System.Windows.Forms.Button();
             this.btPictureClear = new System.Windows.Forms.Button();
             this.pbPicture = new System.Windows.Forms.PictureBox();
@@ -75,7 +74,6 @@ namespace CarReportSystem {
             this.btSearchAuther = new System.Windows.Forms.Button();
             this.tbSearchAuther = new System.Windows.Forms.TextBox();
             this.gbMaker.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202212DataSet)).BeginInit();
@@ -261,20 +259,6 @@ namespace CarReportSystem {
             this.tbReport.Size = new System.Drawing.Size(413, 137);
             this.tbReport.TabIndex = 16;
             // 
-            // dgvPrsons
-            // 
-            this.dgvPrsons.AllowUserToAddRows = false;
-            this.dgvPrsons.AllowUserToDeleteRows = false;
-            this.dgvPrsons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrsons.Location = new System.Drawing.Point(122, 513);
-            this.dgvPrsons.MultiSelect = false;
-            this.dgvPrsons.Name = "dgvPrsons";
-            this.dgvPrsons.ReadOnly = true;
-            this.dgvPrsons.RowTemplate.Height = 21;
-            this.dgvPrsons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrsons.Size = new System.Drawing.Size(744, 96);
-            this.dgvPrsons.TabIndex = 17;
-            // 
             // btPictureOpen
             // 
             this.btPictureOpen.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -435,7 +419,7 @@ namespace CarReportSystem {
             this.carReportDbDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.carReportDbDataGridView.RowTemplate.Height = 21;
             this.carReportDbDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.carReportDbDataGridView.Size = new System.Drawing.Size(744, 144);
+            this.carReportDbDataGridView.Size = new System.Drawing.Size(744, 183);
             this.carReportDbDataGridView.TabIndex = 26;
             this.carReportDbDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.carReportDbDataGridView_DataError);
             this.carReportDbDataGridView.Click += new System.EventHandler(this.carReportDbDataGridView_Click);
@@ -534,7 +518,6 @@ namespace CarReportSystem {
             this.Controls.Add(this.pbPicture);
             this.Controls.Add(this.btPictureClear);
             this.Controls.Add(this.btPictureOpen);
-            this.Controls.Add(this.dgvPrsons);
             this.Controls.Add(this.tbReport);
             this.Controls.Add(this.gbMaker);
             this.Controls.Add(this.cbCarName);
@@ -555,7 +538,6 @@ namespace CarReportSystem {
             this.Load += new System.EventHandler(this.Form1_Load_1);
             this.gbMaker.ResumeLayout(false);
             this.gbMaker.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrsons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -587,7 +569,6 @@ namespace CarReportSystem {
         private System.Windows.Forms.RadioButton rbToyota;
         private System.Windows.Forms.ComboBox cbCarName;
         private System.Windows.Forms.TextBox tbReport;
-        private System.Windows.Forms.DataGridView dgvPrsons;
         private System.Windows.Forms.Button btPictureOpen;
         private System.Windows.Forms.Button btPictureClear;
         private System.Windows.Forms.PictureBox pbPicture;
