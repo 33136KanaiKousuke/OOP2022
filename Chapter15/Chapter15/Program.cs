@@ -18,30 +18,37 @@ namespace Chapter15 {
             }
 
             //発行年の昇順、降順の処理
-            Console.Write("昇順降順:2  ");
+            Console.Write("昇順:1降順:2  ");
             var sort = int.Parse(Console.ReadLine());
             IEnumerable<Book> books;
             if (sort == 1) {
                 books = Library.Books.Where(b => years.Contains(b.PublishedYear)).OrderBy(b => b.PublishedYear);
-                
             }
             else {
                 books = Library.Books.Where(b => years.Contains(b.PublishedYear)).OrderByDescending(b => b.PublishedYear);
-                
             }
 
             foreach (var book in books) {
                 Console.WriteLine(book);
             }
+            Console.WriteLine("");//改行
 
-            var groups = Library.Books.Where(b => years.Contains(b.PublishedYear)).GroupBy(b => b.PublishedYear).OrderBy(g => g.Key);
-            foreach (var group in groups) {
-                Console.WriteLine("");//改行
-                Console.WriteLine($"{group.Key}年");
-                foreach (var book in group) {
-                    var category = Library.Categories.Where(b => b.Id == book.CategoryId).First();
-                    Console.WriteLine($"タイトル:{book.Title},価格:{book.Price},カテゴリー:{category.Name}");
-                }
+            //var groups = Library.Books.Where(b => years.Contains(b.PublishedYear)).GroupBy(b => b.PublishedYear).OrderBy(g => g.Key);
+            var selected = Library.Books.Where(b => years.Contains(b.PublishedYear))
+                                     .OrderByDescending(b => b.PublishedYear)
+                                     .ThenBy(b => b.CategoryId)
+                                     .Join(Library.Categories, 
+                                            book => book.CategoryId,
+                                            category => category.Id,
+                                            (book, category) => new { 
+                                                Title = book.Title, 
+                                                Category = category, 
+                                                PublishdYear = book.PublishedYear 
+                                            }
+                                           );
+            
+            foreach (var book in selected) {
+                Console.WriteLine($"{book.Title},{book.PublishdYear},{book.Category}");
             }
 
         }
