@@ -22,6 +22,7 @@ namespace Chapter15 {
             var sort = int.Parse(Console.ReadLine());
             IEnumerable<Book> books;
 
+
             if (sort == 1) {
                 books = Library.Books.Where(b => years.Contains(b.PublishedYear)).OrderBy(b => b.PublishedYear);
             }
@@ -36,23 +37,21 @@ namespace Chapter15 {
 
             //var groups = Library.Books.Where(b => years.Contains(b.PublishedYear)).GroupBy(b => b.PublishedYear).OrderBy(g => g.Key);
             var selected = Library.Books.Where(b => years.Contains(b.PublishedYear))
-                                     .Join(Library.Categories, 
+                                        .Join(Library.Categories, 
                                             book => book.CategoryId,
                                             category => category.Id,
                                             (book, category) => new { 
                                                 Title = book.Title, 
                                                 Category = category, 
-                                                PublishdYear = book.PublishedYear 
+                                                PublishdYear = book.PublishedYear,
+                                                Price = book.Price,
                                             }
                                            );
             
-            foreach (var book in selected
-                                         .OrderByDescending(x => x.PublishdYear)
-                                         .ThenBy(x => x.Category)) 
-            {
-                Console.WriteLine($"{book.PublishdYear},{book.Title},{book.Category}");
+            foreach (var book in selected.OrderByDescending(x => x.PublishdYear).ThenBy(x => x.Category)) {
+                //Console.WriteLine($"{book.PublishdYear},{book.Title},{book.Category}");
             }
-
+            Console.WriteLine($"金額の合計{ selected.Sum(b => b.Price)}");
         }
     }
 }
