@@ -40,8 +40,7 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_4() {
-            var selected = Library.Books
-                                        .Join(Library.Categories,
+            var selected = Library.Books .Join(Library.Categories,
                                             book => book.CategoryId,
                                             category => category.Id,
                                             (book, category) => new {
@@ -57,19 +56,74 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_5() {
-            
+            var books = Library.Books.Where(b => b.PublishedYear == 2016)
+                                     .Join(Library.Categories,
+                                           book => book.CategoryId,
+                                           category => category.Id,
+                                           (book,category) => category.Name)
+                                     .Distinct();
+
+            foreach (var name in books) {
+                Console.WriteLine(name);
+            }
         }
 
         private static void Exercise1_6() {
-            
+            var books = Library.Books.Join(Library.Categories,
+                                            book => book.CategoryId,
+                                            category => category.Id,
+                                            (book, category) => new {
+                                                Title = book.Title,
+                                                Category = category.Name,
+                                                PublishdYear = book.PublishedYear,
+                                                Price = book.Price,
+                                            }
+                                           ).GroupBy(b => b.Category).OrderBy(b => b.Key);
+
+            foreach (var book in books) {
+                Console.WriteLine($"#{book.Key}");
+                foreach (var b in book) {
+                    Console.WriteLine($" {b.Title}");
+                }
+            }
         }
 
         private static void Exercise1_7() {
-            
+            var books = Library.Books.Join(Library.Categories,
+                                            book => book.CategoryId,
+                                            category => category.Id,
+                                            (book, category) => new {
+                                                Title = book.Title,
+                                                Category = category.Name,
+                                                PublishdYear = book.PublishedYear,
+                                                Price = book.Price,
+                                            }
+                                           ).GroupBy(b => b.PublishdYear).OrderBy(b => b.Key);
+
+            foreach (var book in books) {
+                Console.WriteLine($"#{book.Key}");
+                foreach (var b in book.Where(b => b.Category == "Development")) {
+                    Console.WriteLine($" {b.Title}");
+                }
+            }
         }
 
         private static void Exercise1_8() {
-            
+            var books = Library.Books.Join(Library.Categories,
+                                            book => book.CategoryId,
+                                            category => category.Id,
+                                            (book, category) => new {
+                                                Title = book.Title,
+                                                Category = category.Name,
+                                                PublishdYear = book.PublishedYear,
+                                                Price = book.Price,
+                                            }
+                                           );
+
+            foreach (var book in books) {
+                Console.WriteLine($"{book.Category}");
+                
+            }
         }
     }
 }
