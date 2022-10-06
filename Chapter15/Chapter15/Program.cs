@@ -22,7 +22,6 @@ namespace Chapter15 {
             var sort = int.Parse(Console.ReadLine());
             IEnumerable<Book> books;
 
-
             if (sort == 1) {
                 books = Library.Books.Where(b => years.Contains(b.PublishedYear)).OrderBy(b => b.PublishedYear);
             }
