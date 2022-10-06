@@ -21,6 +21,7 @@ namespace Chapter15 {
             Console.Write("昇順:1降順:2  ");
             var sort = int.Parse(Console.ReadLine());
             IEnumerable<Book> books;
+
             if (sort == 1) {
                 books = Library.Books.Where(b => years.Contains(b.PublishedYear)).OrderBy(b => b.PublishedYear);
             }
@@ -35,8 +36,6 @@ namespace Chapter15 {
 
             //var groups = Library.Books.Where(b => years.Contains(b.PublishedYear)).GroupBy(b => b.PublishedYear).OrderBy(g => g.Key);
             var selected = Library.Books.Where(b => years.Contains(b.PublishedYear))
-                                     .OrderByDescending(b => b.PublishedYear)
-                                     .ThenBy(b => b.CategoryId)
                                      .Join(Library.Categories, 
                                             book => book.CategoryId,
                                             category => category.Id,
@@ -47,8 +46,11 @@ namespace Chapter15 {
                                             }
                                            );
             
-            foreach (var book in selected) {
-                Console.WriteLine($"{book.Title},{book.PublishdYear},{book.Category}");
+            foreach (var book in selected
+                                         .OrderByDescending(x => x.PublishdYear)
+                                         .ThenBy(x => x.Category)) 
+            {
+                Console.WriteLine($"{book.PublishdYear},{book.Title},{book.Category}");
             }
 
         }
