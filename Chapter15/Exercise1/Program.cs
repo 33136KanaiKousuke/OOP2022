@@ -89,21 +89,14 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_7() {
-            var books = Library.Books.Join(Library.Categories,
-                                            book => book.CategoryId,
-                                            category => category.Id,
-                                            (book, category) => new {
-                                                Title = book.Title,
-                                                Category = category.Name,
-                                                PublishdYear = book.PublishedYear,
-                                                Price = book.Price,
-                                            }
-                                           ).GroupBy(b => b.PublishdYear).OrderBy(b => b.Key);
-
-            foreach (var book in books) {
-                Console.WriteLine($"#{book.Key}");
-                foreach (var b in book.Where(b => b.Category == "Development")) {
-                    Console.WriteLine($" {b.Title}");
+            var categoryId = Library.Categories.Single(c => c.Name == "Development").Id;
+            var groups = Library.Books.Where(b => b.CategoryId == categoryId)
+                                      .GroupBy(b => b.PublishedYear)
+                                      .OrderBy(b => b.Key);
+            foreach (var group in groups) {
+                Console.WriteLine($"#{group.Key}");
+                foreach (var book in group) {
+                    Console.WriteLine($" {book.Title}");
                 }
             }
         }
@@ -118,10 +111,10 @@ namespace Exercise1 {
                                                 PublishdYear = book.PublishedYear,
                                                 Price = book.Price,
                                             }
-                                           );
+                                           )/*.Where(b => int.Parse(b.Category) > 4)*/;
 
             foreach (var book in books) {
-                Console.WriteLine($"{book.Category}");
+                //Console.WriteLine($"{book.Key}");
                 
             }
         }
