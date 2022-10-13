@@ -102,19 +102,17 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_8() {
-            var books = Library.Books.Join(Library.Categories,
-                                            book => book.CategoryId,
-                                            category => category.Id,
-                                            (book, category) => new {
-                                                Title = book.Title,
-                                                Category = category.Name,
-                                                PublishdYear = book.PublishedYear,
-                                                Price = book.Price,
+            var query = Library.Categories.GroupJoin(Library.Books,
+                                            c => c.Id,
+                                            b => b.CategoryId,
+                                            (c, b) => new {
+                                                Category = c.Name,
+                                                Count = b.Count(),
                                             }
-                                           )/*.Where(b => int.Parse(b.Category) > 4)*/;
+                                           ).Where(x => x.Count >= 4);
 
-            foreach (var book in books) {
-                //Console.WriteLine($"{book.Key}");
+            foreach (var category in query) {
+                Console.WriteLine($"{category.Category}");
                 
             }
         }
