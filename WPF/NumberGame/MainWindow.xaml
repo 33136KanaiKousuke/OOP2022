@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumberGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="470" Width="410">
+        Title="MainWindow" Height="470" Width="410" Loaded="Window_Loaded">
     <StackPanel>
         <Grid>
             <Grid.RowDefinitions>
@@ -16,11 +16,11 @@
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Grid.Row="0" Width="80" Height="80" Content="1" Click="Button_Click"/>
             <Button Grid.Column="1" Grid.Row="0" Width="80" Height="80" Content="2" Click="Button_Click"/>
@@ -48,6 +48,6 @@
             <Button Grid.Column="3" Grid.Row="4" Width="80" Height="80" Content="24" Click="Button_Click"/>
             <Button Grid.Column="4" Grid.Row="4" Width="80" Height="80" Content="25" Click="Button_Click"/>
         </Grid>
-        <TextBlock x:Name="infoDisp" TextWrapping="Wrap" Height="25" FontSize="20"/>
+        <TextBlock x:Name="infoDisp" TextWrapping="Wrap"  Background="LightBlue" Height="38" FontSize="20"/>
     </StackPanel>
 </Window>
