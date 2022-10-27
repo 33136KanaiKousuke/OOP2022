@@ -20,6 +20,7 @@ namespace CollarChecker {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+        //List<MyColor> colors = new List<MyColor>();
         public MainWindow() {
             InitializeComponent();
 
@@ -27,7 +28,21 @@ namespace CollarChecker {
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            label.Background = new SolidColorBrush(Color.FromRgb((byte)int.Parse(RedText.Text), (byte)int.Parse(GreenText.Text), (byte)int.Parse(BlueText.Text)));
+            label.Background = new SolidColorBrush(Color.FromRgb((byte)int.Parse(rValue.Text),
+                (byte)int.Parse(gValue.Text), (byte)int.Parse(bValue.Text)));
+            
+        }
+
+        private void setColor() {
+            var r = byte.Parse(rValue.Text);
+            var g = byte.Parse(gValue.Text);
+            var b = byte.Parse(bValue.Text);
+
+            label.Background = new SolidColorBrush(Color.FromRgb(r, g, b));
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            setColor();
         }
 
         private MyColor[] GetColorList() {
@@ -36,13 +51,19 @@ namespace CollarChecker {
         }
 
         private void Border_Loaded(object sender, RoutedEventArgs e) {
-
+            
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var mycolor = (MyColor)((ComboBox)sender).SelectedItem;
             var color = mycolor.Color;
             var name = mycolor.Name;
+            rSlider.Value = color.R;
+            gSlider.Value = color.G;
+            bSlider.Value = color.B;
+
+            label.Background = new SolidColorBrush(Color.FromRgb((byte)int.Parse(rSlider.Value.ToString()),
+                 (byte)int.Parse(gSlider.Value.ToString()), (byte)int.Parse(bSlider.Value.ToString())));
         }
 
         private void textBoxPrice_PreviewTextInput(object sender, TextCompositionEventArgs e) {
@@ -50,19 +71,14 @@ namespace CollarChecker {
             e.Handled = !new Regex("[0-9]").IsMatch(e.Text);
         }
 
-        private void textBoxPrice_PreviewExecuted(object sender, ExecutedRoutedEventArgs e) {
-            // 貼り付けを許可しない
-            if (e.Command == ApplicationCommands.Paste) {
-                e.Handled = true;
-            }
-        }
-
         private void Text_up(object sender, KeyEventArgs e) {
-            label.Background = new SolidColorBrush(Color.FromRgb((byte)int.Parse(RedText.Text), (byte)int.Parse(GreenText.Text), (byte)int.Parse(BlueText.Text)));
+            label.Background = new SolidColorBrush(Color.FromRgb((byte)int.Parse(rValue.Text),
+                (byte)int.Parse(gValue.Text), (byte)int.Parse(bValue.Text)));
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e) {
 
-
+        }
     }
     public class MyColor {
         public Color Color { get; set; }
