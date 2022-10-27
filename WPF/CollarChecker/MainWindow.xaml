@@ -5,14 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CollarChecker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="600">
+        Title="MainWindow" Height="500" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="69*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="74*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -31,24 +34,41 @@
             <TextBlock HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Text="R" FontSize="25"/>
             <TextBlock HorizontalAlignment="Center" Grid.Column="0" Grid.Row="3" Text="G" FontSize="25"/>
             <TextBlock HorizontalAlignment="Center" Grid.Column="0" Grid.Row="5" Text="B" FontSize="25"/>
-            <Slider x:Name="RedSlaider"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
-                    Value="{Binding val_int}" Minimum="0" Maximum="255"/>
-            <TextBlock x:Name="RedText" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center"
-                       FontSize="25" Margin="5"
-                       Text="{Binding ElementName=RedSlaider, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"/>
-            <Slider x:Name="GreenSlider" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"
-                    Value="{Binding val_int}" Minimum="0" Maximum="255"/>
-            <TextBlock x:Name="GreenText" Grid.Row="3" Grid.Column="4" VerticalAlignment="Center"
-                       FontSize="25" Margin="5"
-                       Text="{Binding ElementName=GreenSlider, Path=Value, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}"/>
-            <Slider x:Name="BlueSlider" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"
-                    Value="{Binding val_int}" Minimum="0" Maximum="255"/>
-            <TextBlock x:Name="BlueText" Grid.Row="5" Grid.Column="4" VerticalAlignment="Center"
-                       FontSize="25" Margin="5"
-                       Text="{Binding ElementName=BlueSlider, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"/>
+            <Slider x:Name="rSlider"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+                    Value="{Binding val_int}" Minimum="0" Maximum="255" ValueChanged="Slider_ValueChanged"/>
+            <TextBox x:Name="RedText" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center"
+                       FontSize="25" Margin="5" InputMethod.IsInputMethodEnabled="False" KeyUp="Text_up"
+                       PreviewTextInput="textBoxPrice_PreviewTextInput"
+                       Text="{Binding ElementName=rSlider, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}" />
+            <Slider x:Name="gSlider" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"
+                    Value="{Binding val_int}" Minimum="0" Maximum="255" ValueChanged="Slider_ValueChanged"/>
+            <TextBox x:Name="GreenText" Grid.Row="3" Grid.Column="4" VerticalAlignment="Center"
+                       FontSize="25" Margin="5" InputMethod.IsInputMethodEnabled="False" KeyUp="Text_up"
+                       PreviewTextInput="textBoxPrice_PreviewTextInput"
+                       Text="{Binding ElementName=gSlider, Path=Value, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}"/>
+            <Slider x:Name="bSlider" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"
+                    Value="{Binding val_int}" Minimum="0" Maximum="255" ValueChanged="Slider_ValueChanged"/>
+            <TextBox x:Name="BlueText" Grid.Row="5" Grid.Column="4" VerticalAlignment="Center"
+                       FontSize="25" Margin="5" InputMethod.IsInputMethodEnabled="False" KeyUp="Text_up"
+                       PreviewTextInput="textBoxPrice_PreviewTextInput"
+                       Text="{Binding ElementName=bSlider, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"/>
+            <ComboBox ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="3,30,3,3" Grid.Row="6" Grid.Column="1" Height="24" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="155" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black" Loaded="Border_Loaded"  >
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </Grid>
-        <Label x:Name="label" Grid.Column="0" Margin="15" Background="Silver">
-            
+        <Label x:Name="label" Grid.Column="0" Margin="15" Background="Silver" Grid.ColumnSpan="2">
+
         </Label>
     </Grid>
 </Window>
