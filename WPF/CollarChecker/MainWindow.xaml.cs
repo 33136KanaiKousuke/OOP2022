@@ -20,7 +20,9 @@ namespace CollarChecker {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
-        //List<MyColor> colors = new List<MyColor>();
+        List<MyColor> colorList = new List<MyColor>();
+        MyColor mycolor = new MyColor();
+
         public MainWindow() {
             InitializeComponent();
 
@@ -33,16 +35,14 @@ namespace CollarChecker {
             
         }
 
+        //テキストボックスの値を元の色に設定
         private void setColor() {
             var r = byte.Parse(rValue.Text);
             var g = byte.Parse(gValue.Text);
             var b = byte.Parse(bValue.Text);
 
             label.Background = new SolidColorBrush(Color.FromRgb(r, g, b));
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e) {
-            setColor();
         }
 
         private MyColor[] GetColorList() {
@@ -77,7 +77,35 @@ namespace CollarChecker {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
+            //stockList.Items.Add(" R:" + rValue.Text + " G:" + gValue.Text + " B:" + bValue.Text);
 
+            MyColor setColor = new MyColor();
+            var r = byte.Parse(rValue.Text);
+            var g = byte.Parse(gValue.Text);
+            var b = byte.Parse(bValue.Text);
+            setColor.Color = Color.FromRgb(r, g, b);
+
+            //テキストボックスにRGB値から色名称があるかチェック
+            var colorName = ((IEnumerable<MyColor>)DataContext)
+                                                .Where(c => c.Color.R == setColor.Color.R &&
+                                                            c.Color.G == setColor.Color.G &&
+                                                            c.Color.B == setColor.Color.B).FirstOrDefault();
+
+            stockList.Items.Insert(0,colorName?.Name ?? " R:" + rValue.Text + " G:" + gValue.Text + " B:" + bValue.Text);
+            //setColor.Color = Color.FromRgb(r, g, b);
+            colorList.Insert(0,setColor);
+            
+        }
+
+        private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            rSlider.Value = colorList[stockList.SelectedIndex].Color.R;
+            gSlider.Value = colorList[stockList.SelectedIndex].Color.G;
+            bSlider.Value = colorList[stockList.SelectedIndex].Color.B;
+            setColor();
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e) {
+            setColor();
         }
     }
     public class MyColor {
