@@ -21,7 +21,6 @@ namespace CollarChecker {
     /// </summary>
     public partial class MainWindow : Window {
         List<MyColor> colorList = new List<MyColor>();
-        MyColor mycolor = new MyColor();
 
         public MainWindow() {
             InitializeComponent();
@@ -55,15 +54,10 @@ namespace CollarChecker {
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            var mycolor = (MyColor)((ComboBox)sender).SelectedItem;
-            var color = mycolor.Color;
-            var name = mycolor.Name;
-            rSlider.Value = color.R;
-            gSlider.Value = color.G;
-            bSlider.Value = color.B;
-
-            label.Background = new SolidColorBrush(Color.FromRgb((byte)int.Parse(rSlider.Value.ToString()),
-                 (byte)int.Parse(gSlider.Value.ToString()), (byte)int.Parse(bSlider.Value.ToString())));
+            rSlider.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.R;
+            gSlider.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.G;
+            bSlider.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.B;
+            setColor();
         }
 
         private void textBoxPrice_PreviewTextInput(object sender, TextCompositionEventArgs e) {
@@ -76,8 +70,8 @@ namespace CollarChecker {
                 (byte)int.Parse(gValue.Text), (byte)int.Parse(bValue.Text)));
         }
 
+        //STOCKボタンが押された時の処理
         private void Button_Click(object sender, RoutedEventArgs e) {
-            //stockList.Items.Add(" R:" + rValue.Text + " G:" + gValue.Text + " B:" + bValue.Text);
 
             MyColor setColor = new MyColor();
             var r = byte.Parse(rValue.Text);
@@ -85,16 +79,23 @@ namespace CollarChecker {
             var b = byte.Parse(bValue.Text);
             setColor.Color = Color.FromRgb(r, g, b);
 
-            //テキストボックスにRGB値から色名称があるかチェック
+            //テキストボックスにRGB値から色名称があるかチェック(ラムダ式)
             var colorName = ((IEnumerable<MyColor>)DataContext)
                                                 .Where(c => c.Color.R == setColor.Color.R &&
                                                             c.Color.G == setColor.Color.G &&
                                                             c.Color.B == setColor.Color.B).FirstOrDefault();
 
-            stockList.Items.Insert(0,colorName?.Name ?? " R:" + rValue.Text + " G:" + gValue.Text + " B:" + bValue.Text);
-            //setColor.Color = Color.FromRgb(r, g, b);
+            //nullだったらテキストの値を入れる(null条件演算子、null合体演算子),Insert(先頭に追加される)
+            stockList.Items.Insert(0,colorName?.Name ?? " R : " + r + " G : " + g + " B : " + b);
             colorList.Insert(0,setColor);
             
+        }
+
+        //Deleteボタンが押された時の処理
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
+            if (stockList.SelectedIndex >= 0) {
+                stockList.Items.RemoveAt(stockList.SelectedIndex);
+            }
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -107,6 +108,7 @@ namespace CollarChecker {
         private void Window_Loaded_1(object sender, RoutedEventArgs e) {
             setColor();
         }
+
     }
     public class MyColor {
         public Color Color { get; set; }
