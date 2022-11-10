@@ -44,6 +44,10 @@ namespace CollarChecker {
 
         }
 
+        private void Window_Loaded_1(object sender, RoutedEventArgs e) {
+            setColor();
+        }
+
         private MyColor[] GetColorList() {
             return typeof(Colors).GetProperties(BindingFlags.Public | BindingFlags.Static)
                 .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
@@ -93,20 +97,24 @@ namespace CollarChecker {
 
         //Deleteボタンが押された時の処理
         private void Button_Click_1(object sender, RoutedEventArgs e) {
-            if (stockList.SelectedIndex >= 0) {
-                stockList.Items.RemoveAt(stockList.SelectedIndex);
+            var Index = stockList.SelectedIndex;
+            if (Index == -1) return;
+            {
+                stockList.Items.RemoveAt(Index);
+                colorList.RemoveAt(Index);
             }
+            
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            rSlider.Value = colorList[stockList.SelectedIndex].Color.R;
-            gSlider.Value = colorList[stockList.SelectedIndex].Color.G;
-            bSlider.Value = colorList[stockList.SelectedIndex].Color.B;
-            setColor();
-        }
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e) {
-            setColor();
+            if (stockList.SelectedIndex == -1) return;
+            {
+                rSlider.Value = colorList[stockList.SelectedIndex].Color.R;
+                gSlider.Value = colorList[stockList.SelectedIndex].Color.G;
+                bSlider.Value = colorList[stockList.SelectedIndex].Color.B;
+                setColor();
+            }
+            
         }
 
     }
