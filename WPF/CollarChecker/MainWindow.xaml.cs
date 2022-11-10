@@ -97,6 +97,7 @@ namespace CollarChecker {
 
         //Deleteボタンが押された時の処理
         private void Button_Click_1(object sender, RoutedEventArgs e) {
+
             //var Index = stockList.SelectedIndex;
             //if (Index == -1) return;
             //{
