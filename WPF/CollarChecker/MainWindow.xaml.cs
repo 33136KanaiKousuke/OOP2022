@@ -97,13 +97,17 @@ namespace CollarChecker {
 
         //Deleteボタンが押された時の処理
         private void Button_Click_1(object sender, RoutedEventArgs e) {
-            var Index = stockList.SelectedIndex;
-            if (Index == -1) return;
-            {
-                stockList.Items.RemoveAt(Index);
-                colorList.RemoveAt(Index);
+            //var Index = stockList.SelectedIndex;
+            //if (Index == -1) return;
+            //{
+            //    stockList.Items.RemoveAt(Index);
+            //    colorList.RemoveAt(Index);
+            //}
+
+            if (stockList.SelectedIndex >= 0) {
+                stockList.Items.RemoveAt(stockList.SelectedIndex);
             }
-            
+
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
