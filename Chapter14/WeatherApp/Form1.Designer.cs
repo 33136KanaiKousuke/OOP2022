@@ -56,7 +56,7 @@ namespace WeatherApp {
             this.cmArea.FormattingEnabled = true;
             this.cmArea.Location = new System.Drawing.Point(135, 181);
             this.cmArea.Name = "cmArea";
-            this.cmArea.Size = new System.Drawing.Size(121, 20);
+            this.cmArea.Size = new System.Drawing.Size(141, 20);
             this.cmArea.TabIndex = 2;
             // 
             // label1
