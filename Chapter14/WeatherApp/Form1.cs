@@ -16,14 +16,15 @@ namespace WeatherApp {
         string areacode;
         string weathercode;
         string tweathercode;
+        string dayaftertcode;
         public static readonly string url = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/";
-        //"https://www.jma.go.jp/bosai/forecast/img/100.png";
         public static readonly string url2 = "https://www.jma.go.jp/bosai/forecast/data/forecast/";
         public Form1() {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            //pictureBox1.ImageLocation = @"C:\Users\infosys\Pictures\Saved Pictures\都道府県.png";
             cmArea.Items.Add("宗谷地方");
             cmArea.Items.Add("上川・留萌地方");
             cmArea.Items.Add("網走・北見・紋別地方");
@@ -275,8 +276,9 @@ namespace WeatherApp {
             var cString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/"+ areacode + ".json");
             var cjson = JsonConvert.DeserializeObject<Class1[]>(cString);
 
-            //var bString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/img/100.png");
-            //var bjson = JsonConvert.DeserializeObject<Class1[]>(bString);
+            weathercode = cjson[0].timeSeries[0].areas[0].weatherCodes[0];
+            tweathercode = cjson[0].timeSeries[0].areas[0].weatherCodes[1];
+            dayaftertcode = cjson[0].timeSeries[0].areas[0].weatherCodes[2];
 
             tbPublishingOffice.Text = json.publishingOffice;
             tbreportDatetime.Text = json.reportDatetime.ToString();
@@ -284,6 +286,11 @@ namespace WeatherApp {
             tbToday.Text = cjson[0].timeSeries[0].areas[0].weathers[0];
             tbTomorrow.Text = cjson[0].timeSeries[0].areas[0].weathers[1];
             tbDayAfterTomorrow.Text = cjson[0].timeSeries[0].areas[0].weathers[2];
+            pbTodayWether.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + weathercode + ".png";
+            pbtWether.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + tweathercode + ".png";
+            pbDayAftert.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + dayaftertcode + ".png";
+            tbMaxTemperature.Text = cjson[1].tempAverage.areas[0].max;
+            tbMiniTemperature.Text = cjson[1].tempAverage.areas[0].min;
         }
 
         private void cmArea_SelectedIndexChanged(object sender, EventArgs e) {
