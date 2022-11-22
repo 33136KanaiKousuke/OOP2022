@@ -23,8 +23,22 @@ namespace WeatherApp {
             InitializeComponent();
         }
 
+        //マスク処理
+        private void EnableCheck()
+        {
+            
+            if (cmArea.Text == "")
+            {
+                btWeatherGet.Enabled = false;
+            }
+            else {
+                btWeatherGet.Enabled = true;
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e) {
             //pictureBox1.ImageLocation = @"C:\Users\infosys\Pictures\Saved Pictures\都道府県.png";
+            EnableCheck();
             cmArea.Items.Add("宗谷地方");
             cmArea.Items.Add("上川・留萌地方");
             cmArea.Items.Add("網走・北見・紋別地方");
@@ -294,7 +308,7 @@ namespace WeatherApp {
         }
 
         private void cmArea_SelectedIndexChanged(object sender, EventArgs e) {
-
+            EnableCheck();
         }
     }
 }
