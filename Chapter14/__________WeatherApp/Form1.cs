@@ -17,20 +17,18 @@ namespace WeatherApp {
         string weathercode;
         string tweathercode;
         string dayaftertcode;
-        string threedayscode;
-        string fourdayscode;
-        string fivedayscode;
-        string sixdayscode;
         public static readonly string url = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/";
         public static readonly string url2 = "https://www.jma.go.jp/bosai/forecast/data/forecast/";
         public Form1() {
             InitializeComponent();
         }
 
-        //修正,削除ボタンのマスク処理を行う（マスク判定も含む)
+        //マスク処理
         private void EnableCheck()
         {
-            if (cmArea.Text == "") {
+            
+            if (cmArea.Text == "")
+            {
                 btWeatherGet.Enabled = false;
             }
             else {
@@ -102,7 +100,6 @@ namespace WeatherApp {
         }
 
         private void btWeatherGet_Click(object sender, EventArgs e) {
-            
             var wc = new WebClient() {
                 Encoding = Encoding.UTF8
             };
@@ -296,10 +293,6 @@ namespace WeatherApp {
             weathercode = cjson[0].timeSeries[0].areas[0].weatherCodes[0];
             tweathercode = cjson[0].timeSeries[0].areas[0].weatherCodes[1];
             dayaftertcode = cjson[0].timeSeries[0].areas[0].weatherCodes[2];
-            threedayscode = cjson[1].timeSeries[0].areas[0].weatherCodes[3];
-            fourdayscode = cjson[1].timeSeries[0].areas[0].weatherCodes[4];
-            fivedayscode = cjson[1].timeSeries[0].areas[0].weatherCodes[5];
-            sixdayscode = cjson[1].timeSeries[0].areas[0].weatherCodes[6];
 
             tbPublishingOffice.Text = json.publishingOffice;
             tbreportDatetime.Text = json.reportDatetime.ToString();
@@ -307,34 +300,11 @@ namespace WeatherApp {
             tbToday.Text = cjson[0].timeSeries[0].areas[0].weathers[0];
             tbTomorrow.Text = cjson[0].timeSeries[0].areas[0].weathers[1];
             tbDayAfterTomorrow.Text = cjson[0].timeSeries[0].areas[0].weathers[2];
-            
-            //天気マーク
             pbTodayWether.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + weathercode + ".png";
             pbtWether.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + tweathercode + ".png";
-            pbDayAftertWether.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + dayaftertcode + ".png";
-            pbThreeDaysWether.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + threedayscode + ".png";
-            pbFourDaysWether.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + fourdayscode + ".png";
-            pbFiveDaysWether.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + fivedayscode + ".png";
-            pbSixDaysWether.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + sixdayscode + ".png";
-
-            //最低気温/最高気温
-            tbMinTemps.Text = cjson[0].timeSeries[2].areas[0].temps[0];//今日
-            tbMaxTemperature.Text = cjson[0].timeSeries[2].areas[0].temps[1];//今日
-            tbToMinTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMin[1];//明日
-            tbToMaxTemperature.Text = cjson[1].timeSeries[1].areas[0].tempsMax[1];//明日
-            tbMinDafterTomorrow.Text = cjson[1].timeSeries[1].areas[0].tempsMin[2];
-            tbMaxDafterTomorrow.Text = cjson[1].timeSeries[1].areas[0].tempsMax[2];
-            tbThreeDaysMinTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMin[3];
-            tbThreeDaysMaxTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMax[3];
-            tbFourDaysMinTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMin[4];
-            tbFourDaysMaxTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMax[4];
-            tbFiveDaysMinTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMin[5];
-            tbFiveDaysMaxTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMax[5];
-            tbSixDaysMinTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMin[6];
-            tbSixDaysMaxTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMax[6];
-
-
-
+            pbDayAftert.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + dayaftertcode + ".png";
+            tbMaxTemperature.Text = cjson[1].tempAverage.areas[0].max;
+            tbMiniTemperature.Text = cjson[1].tempAverage.areas[0].min;
         }
 
         private void cmArea_SelectedIndexChanged(object sender, EventArgs e) {
