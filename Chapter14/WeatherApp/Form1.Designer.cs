@@ -33,10 +33,8 @@ namespace WeatherApp {
             this.label4 = new System.Windows.Forms.Label();
             this.pbTodayWether = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.tbPublishingOffice = new System.Windows.Forms.TextBox();
             this.tbTomorrow = new System.Windows.Forms.TextBox();
-            this.tbDayAfterTomorrow = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbToday = new System.Windows.Forms.TextBox();
             this.pbtWether = new System.Windows.Forms.PictureBox();
@@ -74,6 +72,7 @@ namespace WeatherApp {
             this.lbSixDaysMinTemps = new System.Windows.Forms.Label();
             this.lbSixDaysMaxTemps = new System.Windows.Forms.Label();
             this.lbreportDatetime = new System.Windows.Forms.Label();
+            this.lbDayAfterTomorrow = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbTodayWether)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbtWether)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDayAftertWether)).BeginInit();
@@ -170,22 +169,11 @@ namespace WeatherApp {
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(14, 191);
+            this.label5.Location = new System.Drawing.Point(25, 197);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(138, 24);
             this.label5.TabIndex = 3;
             this.label5.Text = "明日の天気：";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(14, 268);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(162, 24);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "明後日の天気：";
             // 
             // tbPublishingOffice
             // 
@@ -199,27 +187,18 @@ namespace WeatherApp {
             // tbTomorrow
             // 
             this.tbTomorrow.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbTomorrow.Location = new System.Drawing.Point(170, 191);
+            this.tbTomorrow.Location = new System.Drawing.Point(181, 197);
             this.tbTomorrow.Multiline = true;
             this.tbTomorrow.Name = "tbTomorrow";
             this.tbTomorrow.Size = new System.Drawing.Size(278, 51);
             this.tbTomorrow.TabIndex = 6;
-            // 
-            // tbDayAfterTomorrow
-            // 
-            this.tbDayAfterTomorrow.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbDayAfterTomorrow.Location = new System.Drawing.Point(170, 268);
-            this.tbDayAfterTomorrow.Multiline = true;
-            this.tbDayAfterTomorrow.Name = "tbDayAfterTomorrow";
-            this.tbDayAfterTomorrow.Size = new System.Drawing.Size(278, 51);
-            this.tbDayAfterTomorrow.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(14, 115);
+            this.label7.Location = new System.Drawing.Point(25, 109);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(138, 24);
             this.label7.TabIndex = 3;
@@ -228,7 +207,7 @@ namespace WeatherApp {
             // tbToday
             // 
             this.tbToday.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbToday.Location = new System.Drawing.Point(170, 115);
+            this.tbToday.Location = new System.Drawing.Point(181, 109);
             this.tbToday.Multiline = true;
             this.tbToday.Name = "tbToday";
             this.tbToday.Size = new System.Drawing.Size(278, 51);
@@ -397,7 +376,7 @@ namespace WeatherApp {
             this.lbThreeDays.AutoSize = true;
             this.lbThreeDays.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbThreeDays.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbThreeDays.Location = new System.Drawing.Point(454, 360);
+            this.lbThreeDays.Location = new System.Drawing.Point(454, 356);
             this.lbThreeDays.Name = "lbThreeDays";
             this.lbThreeDays.Size = new System.Drawing.Size(34, 24);
             this.lbThreeDays.TabIndex = 3;
@@ -587,6 +566,17 @@ namespace WeatherApp {
             this.lbreportDatetime.TabIndex = 3;
             this.lbreportDatetime.Text = "日時";
             // 
+            // lbDayAfterTomorrow
+            // 
+            this.lbDayAfterTomorrow.AutoSize = true;
+            this.lbDayAfterTomorrow.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbDayAfterTomorrow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbDayAfterTomorrow.Location = new System.Drawing.Point(454, 283);
+            this.lbDayAfterTomorrow.Name = "lbDayAfterTomorrow";
+            this.lbDayAfterTomorrow.Size = new System.Drawing.Size(34, 24);
+            this.lbDayAfterTomorrow.TabIndex = 3;
+            this.lbDayAfterTomorrow.Text = "日";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -614,7 +604,6 @@ namespace WeatherApp {
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.tbDayAfterTomorrow);
             this.Controls.Add(this.tbToday);
             this.Controls.Add(this.tbTomorrow);
             this.Controls.Add(this.tbPublishingOffice);
@@ -628,10 +617,10 @@ namespace WeatherApp {
             this.Controls.Add(this.lbreportDatetime);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.lbSixDays);
             this.Controls.Add(this.lbFiveDays);
             this.Controls.Add(this.lbFourDays);
+            this.Controls.Add(this.lbDayAfterTomorrow);
             this.Controls.Add(this.lbThreeDays);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label10);
@@ -669,7 +658,6 @@ namespace WeatherApp {
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pbTodayWether;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbPublishingOffice;
         private System.Windows.Forms.TextBox tbTomorrow;
         private System.Windows.Forms.TextBox tbDayAfterTomorrow;
@@ -710,6 +698,7 @@ namespace WeatherApp {
         private System.Windows.Forms.Label lbSixDaysMinTemps;
         private System.Windows.Forms.Label lbSixDaysMaxTemps;
         private System.Windows.Forms.Label lbreportDatetime;
+        private System.Windows.Forms.Label lbDayAfterTomorrow;
     }
 }
 

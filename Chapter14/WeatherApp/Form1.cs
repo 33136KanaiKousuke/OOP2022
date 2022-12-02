@@ -41,7 +41,6 @@ namespace WeatherApp {
 
         private void Form1_Load(object sender, EventArgs e) {
             try {
-                //pictureBox1.ImageLocation = @"C:\Users\infosys\Pictures\Saved Pictures\都道府県.png";
                 EnableCheck();
                 cmArea.Items.Add("宗谷地方");
                 cmArea.Items.Add("上川・留萌地方");
@@ -303,7 +302,7 @@ namespace WeatherApp {
                 //weathercode
                 weathercode = cjson[0].timeSeries[0].areas[0].weatherCodes[0];
                 tweathercode = cjson[0].timeSeries[0].areas[0].weatherCodes[1];
-                dayaftertcode = cjson[0].timeSeries[0].areas[0].weatherCodes[2];
+                dayaftertcode = cjson[1].timeSeries[0].areas[0].weatherCodes[2];
                 threedayscode = cjson[1].timeSeries[0].areas[0].weatherCodes[3];
                 fourdayscode = cjson[1].timeSeries[0].areas[0].weatherCodes[4];
                 fivedayscode = cjson[1].timeSeries[0].areas[0].weatherCodes[5];
@@ -314,7 +313,6 @@ namespace WeatherApp {
                 tbWeatherInfo.Text = json.text;
                 tbToday.Text = cjson[0].timeSeries[0].areas[0].weathers[0];
                 tbTomorrow.Text = cjson[0].timeSeries[0].areas[0].weathers[1];
-                tbDayAfterTomorrow.Text = cjson[0].timeSeries[0].areas[0].weathers[2];
 
                 //天気マーク
                 pbTodayWether.ImageLocation = url3 + weathercode + ".png";
@@ -342,6 +340,7 @@ namespace WeatherApp {
                 lbSixDaysMaxTemps.Text = cjson[1].timeSeries[1].areas[0].tempsMax[6];
 
                 //MM/dd
+                lbDayAfterTomorrow.Text = cjson[1].timeSeries[1].timeDefines[2].ToString("MM/dd" + "日");
                 lbThreeDays.Text = cjson[1].timeSeries[1].timeDefines[3].ToString("MM/dd" + "日");
                 lbFourDays.Text = cjson[1].timeSeries[1].timeDefines[4].ToString("MM/dd" + "日");
                 lbFiveDays.Text = cjson[1].timeSeries[1].timeDefines[5].ToString("MM/dd" + "日");
