@@ -13,24 +13,89 @@
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.ColumnSpan="2">
             <Grid Grid.Column="0">
-                <ComboBox Margin="49,94,722,284"/>
-                <ComboBox HorizontalAlignment="Left" Margin="330,94,0,0" VerticalAlignment="Top" Width="186" Height="41"/>
-                <ComboBox HorizontalAlignment="Left" Margin="581,94,0,0" VerticalAlignment="Top" Width="186" Height="41"/>
-                <Button Content="検索" HorizontalAlignment="Left" Margin="820,105,0,0" VerticalAlignment="Top" Width="80" Height="30" Click="Button_Click"/>
-                <TextBox x:Name="keyWord" HorizontalAlignment="Left" Height="37" Margin="49,200,0,0" 
-                         FontSize="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
-                <Label Content="都道府県" HorizontalAlignment="Left" Margin="49,57,0,0" 
-                       FontSize="20" VerticalAlignment="Top"/>
-                <Label Content="市" HorizontalAlignment="Left" Margin="330,57,0,0" 
-                       FontSize="20" VerticalAlignment="Top"/>
-                <Label Content="お店のジャンル" HorizontalAlignment="Left" Margin="581,57,0,0" 
-                       FontSize="20" VerticalAlignment="Top"/>
-                <Label Content="店名検索" HorizontalAlignment="Left" Margin="49,163,0,0" 
-                       FontSize="20" VerticalAlignment="Top"/>
-                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="43*"/>
+                    <RowDefinition Height="376*"/>
+                </Grid.RowDefinitions>
+                <ComboBox x:Name="Region" HorizontalAlignment="Left" Margin="36,62,0,273" Grid.Row="1"
+                          SelectionChanged="Region_SelectionChanged" Width="204" FontSize="20">
+                    <ComboBoxItem Content="関東" FontSize="20"/>
+                    <ComboBoxItem Content="関西" FontSize="20"/>
+                    <ComboBoxItem Content="北海道" FontSize="20"/>
+                    <ComboBoxItem Content="東北" FontSize="20"/>
+                    <ComboBoxItem Content="北陸・甲信越" FontSize="20"/>
+                    <ComboBoxItem Content="中国" FontSize="20"/>
+                    <ComboBoxItem Content="四国" FontSize="20"/>
+                    <ComboBoxItem Content="九州・沖縄" FontSize="20"/>
+                </ComboBox>
+
+                <ComboBox Margin="292,62,479,273" Grid.Row="1" SelectionChanged="Prefecture_SelectionChanged"  FontSize="20">
+                    <ComboBoxItem Content="北海道" FontSize="20"/>
+                    <ComboBoxItem Content="青森" FontSize="20"/>
+                    <ComboBoxItem Content="岩手" FontSize="20"/>
+                    <ComboBoxItem Content="宮城" FontSize="20"/>
+                    <ComboBoxItem Content="秋田" FontSize="20"/>
+                    <ComboBoxItem Content="山形" FontSize="20"/>
+                    <ComboBoxItem Content="福島" FontSize="20"/>
+                    <ComboBoxItem Content="茨城" FontSize="20"/>
+                    <ComboBoxItem Content="栃木" FontSize="20"/>
+                    <ComboBoxItem Content="群馬" FontSize="20"/>
+                    <ComboBoxItem Content="埼玉" FontSize="20"/>
+                    <ComboBoxItem Content="千葉" FontSize="20"/>
+                    <ComboBoxItem Content="東京" FontSize="20"/>
+                    <ComboBoxItem Content="神奈川" FontSize="20"/>
+                    <ComboBoxItem Content="新潟" FontSize="20"/>
+                    <ComboBoxItem Content="富山" FontSize="20"/>
+                    <ComboBoxItem Content="石川" FontSize="20"/>
+                    <ComboBoxItem Content="福井" FontSize="20"/>
+                    <ComboBoxItem Content="山梨" FontSize="20"/>
+                    <ComboBoxItem Content="長野" FontSize="20"/>
+                    <ComboBoxItem Content="岐阜" FontSize="20"/>
+                    <ComboBoxItem Content="静岡" FontSize="20"/>
+                    <ComboBoxItem Content="愛知" FontSize="20"/>
+                    <ComboBoxItem Content="三重" FontSize="20"/>
+                    <ComboBoxItem Content="滋賀" FontSize="20"/>
+                    <ComboBoxItem Content="京都" FontSize="20"/>
+                    <ComboBoxItem Content="大阪" FontSize="20"/>
+                    <ComboBoxItem Content="兵庫" FontSize="20"/>
+                    <ComboBoxItem Content="奈良" FontSize="20"/>
+                    <ComboBoxItem Content="和歌山" FontSize="20"/>
+                    <ComboBoxItem Content="鳥取" FontSize="20"/>
+                    <ComboBoxItem Content="島根" FontSize="20"/>
+                    <ComboBoxItem Content="岡山" FontSize="20"/>
+                    <ComboBoxItem Content="広島" FontSize="20"/>
+                    <ComboBoxItem Content="山口" FontSize="20"/>
+                    <ComboBoxItem Content="徳島" FontSize="20"/>
+                    <ComboBoxItem Content="香川" FontSize="20"/>
+                    <ComboBoxItem Content="愛媛" FontSize="20"/>
+                    <ComboBoxItem Content="高知" FontSize="20"/>
+                    <ComboBoxItem Content="福岡" FontSize="20"/>
+                    <ComboBoxItem Content="佐賀" FontSize="20"/>
+                    <ComboBoxItem Content="長崎" FontSize="20"/>
+                    <ComboBoxItem Content="熊本" FontSize="20"/>
+                    <ComboBoxItem Content="大分" FontSize="20"/>
+                    <ComboBoxItem Content="宮崎" FontSize="20"/>
+                    <ComboBoxItem Content="鹿児島" FontSize="20"/>
+                    <ComboBoxItem Content="沖縄" FontSize="20"/>
+
+                </ComboBox>
+                <ComboBox HorizontalAlignment="Left" Margin="581,62,0,0" VerticalAlignment="Top" Width="186" Height="41" Grid.Row="1"/>
+                <ComboBox HorizontalAlignment="Left" Margin="581,143,0,0" VerticalAlignment="Top" Width="186" Height="41" Grid.Row="1"/>
+                <Button Content="検索" HorizontalAlignment="Left" Margin="820,62,0,0" VerticalAlignment="Top" Width="80" Height="30" Click="Button_Click" Grid.Row="1"/>
+                <TextBox x:Name="keyWord" HorizontalAlignment="Left" Height="37" Margin="49,230,0,0" 
+                         FontSize="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.Row="1"/>
+                <Label Content="都道府県" HorizontalAlignment="Left" Margin="292,25,0,0" 
+                       FontSize="20" VerticalAlignment="Top" Grid.Row="1"/>
+                <Label Content="市" HorizontalAlignment="Left" Margin="581,25,0,0" 
+                       FontSize="20" VerticalAlignment="Top" Grid.Row="1"/>
+                <Label Content="お店のジャンル" HorizontalAlignment="Left" Margin="581,106,0,0" 
+                       FontSize="20" VerticalAlignment="Top" Grid.Row="1"/>
+                <Label Content="店名検索" HorizontalAlignment="Left" Margin="49,193,0,0" 
+                       FontSize="20" VerticalAlignment="Top" Grid.Row="1"/>
+                <Label Content="地方選択" HorizontalAlignment="Left" Margin="36,25,0,0"
+                       FontSize="20" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="118"/>
+
             </Grid>
-
-
         </ScrollViewer>
     </Grid>
 </Window>

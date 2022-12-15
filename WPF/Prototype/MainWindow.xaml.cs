@@ -22,7 +22,7 @@ namespace Prototype {
     public partial class MainWindow : Window {
         private NavigationService _navi;
         string name;
-        string large_area;
+        //string large_area;
         public static readonly string url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=cf26ec85009189ff&name=";
         public static readonly string url2 = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=cf26ec85009189ff&";
         public MainWindow()
@@ -31,19 +31,74 @@ namespace Prototype {
             //_navi = this.myFrame.NavigationService;
         }
 
+        //private List<Uri> _uriList = new List<Uri>() {
+        //    new Uri("Page1.xaml",UriKind.Relative)
+        //};
+
+        //private void myFrame_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    _navi.Navigate(_uriList[0]);    //初期ページの表示
+        //}
+
+        //private void prevButton_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //    int index = _uriList.FindIndex(p => p == _navi.CurrentSource) - 1;
+        //    _navi.Navigate(_uriList[index]);    //ページの移動
+
+        //}
+
+        //private void nextButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (_navi.CanGoForward)
+        //        _navi.GoForward();
+        //    else {
+        //        int index = _uriList.FindIndex(p => p == _navi.CurrentSource) + 1;
+        //        _navi.Navigate(_uriList[index]);    //ページの移動
+        //    }
+        //}
+
+        //private void myFrame_Navigated(object sender, NavigationEventArgs e)
+        //{
+        //    int index = _uriList.IndexOf(_navi.CurrentSource);
+        //    if (index <= 0)
+        //        prevButton.IsEnabled = false;
+        //    else
+        //        prevButton.IsEnabled = true;
+        //    if (index + 1 == _uriList.Count)
+        //        nextButton.IsEnabled = false;
+        //    else
+        //        nextButton.IsEnabled = true;
+        //}
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var wc = new WebClient() {
-                    Encoding = Encoding.UTF8
-                };
+                Encoding = Encoding.UTF8
+            };
+
+            //Button bt = (Button)sender;
+
+            //_navi.Navigate(_uriList[int.Parse((string)bt.Tag) - 1]);
 
             name = "天武";
             var cString = wc.DownloadString(url + name + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
 
-            keyWord.Text = cjson.results.shop[0].access;
+            //keyWord.Text = cjson.results.shop[0].access;
 
 
         }
+
+        private void Region_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Prefecture_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
     }
 }
