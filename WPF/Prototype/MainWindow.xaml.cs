@@ -71,6 +71,8 @@ namespace Prototype {
         //        nextButton.IsEnabled = true;
         //}
 
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var wc = new WebClient() {
@@ -85,9 +87,9 @@ namespace Prototype {
             var cString = wc.DownloadString(url + name + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
 
+            //Storeimage.Source = cjson.results.shop[0].photo.pc.l;
+            Storename.Text = cjson.results.shop[0].name;
             //keyWord.Text = cjson.results.shop[0].access;
-
-
         }
 
         private void Region_SelectionChanged(object sender, SelectionChangedEventArgs e)
