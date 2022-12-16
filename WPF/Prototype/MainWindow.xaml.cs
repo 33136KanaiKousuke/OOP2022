@@ -20,6 +20,7 @@ namespace Prototype {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+        Image image = new Image();
         private NavigationService _navi;
         string name;
         //string large_area;
@@ -87,9 +88,11 @@ namespace Prototype {
             var cString = wc.DownloadString(url + name + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
 
-            //Storeimage.Source = cjson.results.shop[0].photo.pc.l;
+            BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
+            image.Source = imagesourse;
+            Storeimage.Source = image.Source;
             Storename.Text = cjson.results.shop[0].name;
-            //keyWord.Text = cjson.results.shop[0].access;
+            Storeaccess.Text = cjson.results.shop[0].access;
         }
 
         private void Region_SelectionChanged(object sender, SelectionChangedEventArgs e)
