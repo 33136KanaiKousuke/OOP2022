@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Margin="0,186,0,0">
+        <ScrollViewer Margin="0,186,0,0" Background="AliceBlue">
             <StackPanel Height="2005" >
                 <StackPanel Margin="0,40,15,0" Height="380" Width="750" Background="LightSalmon">
                     <TextBox x:Name="Storename" Height="50"  FontSize="20" Margin="237,10,0,0"/>
@@ -20,8 +20,11 @@
             </StackPanel>
         </ScrollViewer>
         <Grid>
-            <ComboBox x:Name="Region" HorizontalAlignment="Left" Margin="36,62,0,516"
-                          SelectionChanged="Region_SelectionChanged" Width="204" FontSize="20" RenderTransformOrigin="0.495,0.236">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <ComboBox x:Name="Region" Grid.Row="1" HorizontalAlignment="Left" Margin="36,62,0,97"
+                      SelectionChanged="Region_SelectionChanged" Width="204" FontSize="20" RenderTransformOrigin="0.495,0.236" d:LayoutOverrides="VerticalAlignment">
                 <ComboBoxItem Content="関東" FontSize="20"/>
                 <ComboBoxItem Content="関西" FontSize="20"/>
                 <ComboBoxItem Content="北海道" FontSize="20"/>
@@ -32,7 +35,7 @@
                 <ComboBoxItem Content="九州・沖縄" FontSize="20"/>
             </ComboBox>
 
-            <ComboBox Margin="292,62,479,516" SelectionChanged="Prefecture_SelectionChanged"  FontSize="20">
+            <ComboBox Margin="292,62,479,97" SelectionChanged="Prefecture_SelectionChanged"  FontSize="20" d:LayoutOverrides="VerticalAlignment">
                 <ComboBoxItem Content="北海道" FontSize="20"/>
                 <ComboBoxItem Content="青森" FontSize="20"/>
                 <ComboBoxItem Content="岩手" FontSize="20"/>
@@ -82,21 +85,21 @@
                 <ComboBoxItem Content="沖縄" FontSize="20"/>
 
             </ComboBox>
-            <ComboBox HorizontalAlignment="Left" Margin="581,62,0,0" VerticalAlignment="Top" Width="186" Height="41" Grid.Row="1"/>
-            <ComboBox HorizontalAlignment="Left" Margin="581,143,0,0" VerticalAlignment="Top" Width="186" Height="41" Grid.Row="1"/>
-            <Button Content="検索" HorizontalAlignment="Left" Margin="820,62,0,0" VerticalAlignment="Top" Width="80" Height="30" Click="Button_Click" Grid.Row="1"/>
+            <ComboBox HorizontalAlignment="Left" Margin="581,62,0,0" VerticalAlignment="Top" Width="186" Height="41"/>
+            <ComboBox HorizontalAlignment="Left" Margin="581,143,0,0" VerticalAlignment="Top" Width="186" Height="41"/>
+            <Button Content="検索" HorizontalAlignment="Left" Margin="820,62,0,0" VerticalAlignment="Top" Width="80" Height="30" Click="Button_Click"/>
             <TextBox x:Name="keyWord" HorizontalAlignment="Left" Height="37" Margin="36,143,0,0" 
-                         FontSize="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.Row="1"/>
+                         FontSize="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
             <Label Content="都道府県" HorizontalAlignment="Left" Margin="292,25,0,0" 
-                       FontSize="20" VerticalAlignment="Top" Grid.Row="1"/>
+                       FontSize="20" VerticalAlignment="Top"/>
             <Label Content="市" HorizontalAlignment="Left" Margin="581,25,0,0" 
-                       FontSize="20" VerticalAlignment="Top" Grid.Row="1"/>
+                       FontSize="20" VerticalAlignment="Top"/>
             <Label Content="お店のジャンル" HorizontalAlignment="Left" Margin="581,106,0,0" 
-                       FontSize="20" VerticalAlignment="Top" Grid.Row="1"/>
+                       FontSize="20" VerticalAlignment="Top"/>
             <Label Content="店名検索" HorizontalAlignment="Left" Margin="36,106,0,0" 
-                       FontSize="20" VerticalAlignment="Top" Grid.Row="1"/>
+                       FontSize="20" VerticalAlignment="Top"/>
             <Label Content="地方選択" HorizontalAlignment="Left" Margin="36,25,0,0"
-                       FontSize="20" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="118"/>
+                       FontSize="20" VerticalAlignment="Top" Height="37" Width="118"/>
 
         </Grid>
 
