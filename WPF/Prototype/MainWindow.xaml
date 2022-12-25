@@ -12,7 +12,7 @@
         </Grid.ColumnDefinitions>
         <ScrollViewer Margin="0,186,0,0">
             <StackPanel Height="2005" >
-                <StackPanel Margin="0,40,15,0" Height="380" Width="750" >
+                <StackPanel Margin="0,40,15,0" Height="380" Width="750" Background="LightSalmon">
                     <TextBox x:Name="Storename" Height="50"  FontSize="20" Margin="237,10,0,0"/>
                     <Image x:Name="Storeimage" Margin="10,-40,533,0" Height="125"/>
                     <TextBox x:Name="Storeaccess" Margin="237,0,0,0" FontSize="10" Height="20"/>
