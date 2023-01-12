@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Prototype {
     /// <summary>
@@ -90,9 +91,13 @@ namespace Prototype {
 
             BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
             image.Source = imagesourse;
+            Storegenre.Content = cjson.results.shop[0].genre.name;
             Storeimage.Source = image.Source;
-            Storename.Text = cjson.results.shop[0].name;
-            Storeaccess.Text = cjson.results.shop[0].access;
+            Storename.Content = cjson.results.shop[0].name;
+            Storeaddress.Content = cjson.results.shop[0].address;
+            Storeaccess.Content = cjson.results.shop[0].access;
+            Storeurls.Content = cjson.results.shop[0].urls.pc;
+            
         }
 
         private void Region_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -104,6 +109,5 @@ namespace Prototype {
         {
 
         }
-
     }
 }

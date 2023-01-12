@@ -5,12 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prototype"
         mc:Ignorable="d"
-        Title="Page1" Height="450" Width="800">
-    <Grid RenderTransformOrigin="0.532,0.508">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="30"/>
-        </Grid.ColumnDefinitions>
-        
+        Title="Page1" Height="650" Width="1000">
+    <Grid>
+
     </Grid>
 </Window>

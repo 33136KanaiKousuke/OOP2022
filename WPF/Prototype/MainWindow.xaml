@@ -10,12 +10,17 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Margin="0,186,0,0" Background="AliceBlue">
+        <ScrollViewer Margin="0,186,0,0" Background="LemonChiffon">
             <StackPanel Height="2005" >
-                <StackPanel Margin="0,40,15,0" Height="380" Width="750" Background="LightSalmon">
-                    <TextBox x:Name="Storename" Height="50"  FontSize="20" Margin="237,10,0,0"/>
-                    <Image x:Name="Storeimage" Margin="10,-40,533,0" Height="125"/>
-                    <TextBox x:Name="Storeaccess" Margin="237,0,0,0" FontSize="10" Height="20"/>
+                <StackPanel Margin="0,40,15,0" Height="375" Width="750" Background="White">
+                    
+                    <Label Content="Label" x:Name="Storegenre" Margin="237,20,0,0" HorizontalAlignment="Left" Width="100"/>
+                    <Label Content="label" x:Name="Storename" Height="38"  FontSize="20" Margin="237,10,79,0"/>
+                    <Label Content="Label" x:Name="Storeaddress" Margin="237,10,255,0"/>
+                    <Label Content="label" x:Name="Storeaccess" Height="33" Margin="237,10,79,14"/>
+                    <Label Content="Label" x:Name="Storeurls" Margin="237,0,0,0"/>
+                    <Image x:Name="Storeimage" Margin="10,-190,533,0" Height="125"/>
+
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
