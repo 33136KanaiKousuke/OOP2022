@@ -26,7 +26,7 @@ namespace Prototype {
         public string barrier_free { get; set; }
         public Budget budget { get; set; }
         public string budget_memo { get; set; }
-        public int capacity { get; set; }
+        //public int capacity { get; set; }
         public string card { get; set; }
         public string _catch { get; set; }
         public string charter { get; set; }
@@ -57,7 +57,7 @@ namespace Prototype {
         public string open { get; set; }
         public string other_memo { get; set; }
         public string parking { get; set; }
-        public int party_capacity { get; set; }
+        //public int party_capacity { get; set; }
         public string pet { get; set; }
         public Photo photo { get; set; }
         public string private_room { get; set; }

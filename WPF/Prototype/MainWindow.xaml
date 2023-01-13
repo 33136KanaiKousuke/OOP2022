@@ -13,13 +13,16 @@
         <ScrollViewer Margin="0,186,0,0" Background="LemonChiffon">
             <StackPanel Height="2005" >
                 <StackPanel Margin="0,40,15,0" Height="375" Width="750" Background="White">
-                    
+
                     <Label Content="Label" x:Name="Storegenre" Margin="237,20,0,0" HorizontalAlignment="Left" Width="100"/>
                     <Label Content="label" x:Name="Storename" Height="38"  FontSize="20" Margin="237,10,79,0"/>
-                    <Label Content="Label" x:Name="Storeaddress" Margin="237,10,255,0"/>
-                    <Label Content="label" x:Name="Storeaccess" Height="33" Margin="237,10,79,14"/>
+                    <Label Content="Label" x:Name="Storeaddress" Height="25" Margin="237,20,70,0"/>
+                    <Label Content="label" x:Name="Storeaccess" Height="33" Margin="237,20,79,14"/>
                     <Label Content="Label" x:Name="Storeurls" Margin="237,0,0,0"/>
-                    <Image x:Name="Storeimage" Margin="10,-190,533,0" Height="125"/>
+                    <Button Content="移動" x:Name="Storebutton" HorizontalAlignment="Right" Width="129" Margin="0,60,50,0" Height="59" Click="Storebutton_Click"/>
+                    <Image x:Name="Storeimage" Margin="10,-450,533,0" Height="161"/>
+                    <Label Content="Label" x:Name="Storeopen" Height="26" Margin="10,-160,50,0"/>
+                    <Label Content="Label" x:Name="Storesmallarea" Margin="360,-640,287,0" Height="25"/>
 
                 </StackPanel>
             </StackPanel>
@@ -40,7 +43,7 @@
                 <ComboBoxItem Content="九州・沖縄" FontSize="20"/>
             </ComboBox>
 
-            <ComboBox Margin="292,62,479,97" SelectionChanged="Prefecture_SelectionChanged"  FontSize="20" d:LayoutOverrides="VerticalAlignment">
+            <ComboBox x:Name="largearea" Margin="292,62,479,97" SelectionChanged="Prefecture_SelectionChanged"  FontSize="20" d:LayoutOverrides="VerticalAlignment">
                 <ComboBoxItem Content="北海道" FontSize="20"/>
                 <ComboBoxItem Content="青森" FontSize="20"/>
                 <ComboBoxItem Content="岩手" FontSize="20"/>
