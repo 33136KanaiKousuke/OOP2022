@@ -12,17 +12,20 @@
         </Grid.ColumnDefinitions>
         <ScrollViewer Margin="0,186,0,0" Background="LemonChiffon">
             <StackPanel Height="2005" >
-                <StackPanel Margin="0,40,15,0" Height="375" Width="750" Background="White">
+                <StackPanel Margin="0,40,15,0" Height="375" Width="760" Background="White">
 
                     <Label Content="Label" x:Name="Storegenre" Margin="237,20,0,0" HorizontalAlignment="Left" Width="100"/>
                     <Label Content="label" x:Name="Storename" Height="38"  FontSize="20" Margin="237,10,79,0"/>
-                    <Label Content="Label" x:Name="Storeaddress" Height="25" Margin="237,20,70,0"/>
-                    <Label Content="label" x:Name="Storeaccess" Height="33" Margin="237,20,79,14"/>
+                    <Label Content="Label&#xa;" x:Name="Storeaddress" Height="25" Margin="237,20,10,0"/>
+                    <TextBlock Text="TextBlock" x:Name="Storeaccess" TextWrapping="Wrap" Height="33" Margin="237,20,10,14"/>
                     <Label Content="Label" x:Name="Storeurls" Margin="237,0,0,0"/>
-                    <Button Content="移動" x:Name="Storebutton" HorizontalAlignment="Right" Width="129" Margin="0,60,50,0" Height="59" Click="Storebutton_Click"/>
-                    <Image x:Name="Storeimage" Margin="10,-450,533,0" Height="161"/>
-                    <Label Content="Label" x:Name="Storeopen" Height="26" Margin="10,-160,50,0"/>
-                    <Label Content="Label" x:Name="Storesmallarea" Margin="360,-640,287,0" Height="25"/>
+                    <Image Height="40" HorizontalAlignment="Left" Width="44" Margin="10,0,0,0" Source="営業時間アイコン.png"/>
+                    <Button Content="移動" x:Name="Storebutton" HorizontalAlignment="Right" 
+                            Width="114" Margin="0,50,50,0" Height="42" Click="Storebutton_Click"/>
+                    <Image x:Name="Storeimage" Margin="10,-550,533,0" Height="161"/>
+                    <TextBlock Text="TextBlock" x:Name="Storeopen" TextWrapping="WrapWithOverflow" 
+                               Height="42" Margin="54,-210,10,0"/>
+                    <Label Content="Label" x:Name="Storesmallarea" Margin="360,-660,233,0" Height="26"/>
 
                 </StackPanel>
             </StackPanel>
@@ -31,19 +34,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
-            <ComboBox x:Name="Region" Grid.Row="1" HorizontalAlignment="Left" Margin="36,62,0,97"
-                      SelectionChanged="Region_SelectionChanged" Width="204" FontSize="20" RenderTransformOrigin="0.495,0.236" d:LayoutOverrides="VerticalAlignment">
-                <ComboBoxItem Content="関東" FontSize="20"/>
-                <ComboBoxItem Content="関西" FontSize="20"/>
-                <ComboBoxItem Content="北海道" FontSize="20"/>
-                <ComboBoxItem Content="東北" FontSize="20"/>
-                <ComboBoxItem Content="北陸・甲信越" FontSize="20"/>
-                <ComboBoxItem Content="中国" FontSize="20"/>
-                <ComboBoxItem Content="四国" FontSize="20"/>
-                <ComboBoxItem Content="九州・沖縄" FontSize="20"/>
-            </ComboBox>
 
-            <ComboBox x:Name="largearea" Margin="292,62,479,97" SelectionChanged="Prefecture_SelectionChanged"  FontSize="20" d:LayoutOverrides="VerticalAlignment">
+            <ComboBox x:Name="largearea" Margin="95,61,0,98" SelectionChanged="Prefecture_SelectionChanged"  FontSize="20" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="221">
                 <ComboBoxItem Content="北海道" FontSize="20"/>
                 <ComboBoxItem Content="青森" FontSize="20"/>
                 <ComboBoxItem Content="岩手" FontSize="20"/>
@@ -93,21 +85,34 @@
                 <ComboBoxItem Content="沖縄" FontSize="20"/>
 
             </ComboBox>
-            <ComboBox HorizontalAlignment="Left" Margin="581,62,0,0" VerticalAlignment="Top" Width="186" Height="41"/>
-            <ComboBox HorizontalAlignment="Left" Margin="581,143,0,0" VerticalAlignment="Top" Width="186" Height="41"/>
-            <Button Content="検索" HorizontalAlignment="Left" Margin="820,62,0,0" VerticalAlignment="Top" Width="80" Height="30" Click="Button_Click"/>
-            <TextBox x:Name="keyWord" HorizontalAlignment="Left" Height="37" Margin="36,143,0,0" 
+            <ComboBox x:Name="Storegenres" HorizontalAlignment="Left" Margin="389,62,0,0" 
+                      VerticalAlignment="Top" Width="186" Height="41">
+                <ComboBoxItem Content="居酒屋" FontSize="20"/>
+                <ComboBoxItem Content="ダイニングバー・バル" FontSize="20"/>
+                <ComboBoxItem Content="創作料理" FontSize="20"/>
+                <ComboBoxItem Content="和食" FontSize="20"/>
+                <ComboBoxItem Content="洋食" FontSize="20"/>
+                <ComboBoxItem Content="イタリアン・フレンチ" FontSize="20"/>
+                <ComboBoxItem Content="焼肉・ホルモン" FontSize="20"/>
+                <ComboBoxItem Content="韓国料理" FontSize="20"/>
+                <ComboBoxItem Content="アジア・エスニック料理" FontSize="20"/>
+                <ComboBoxItem Content="各国料理" FontSize="20"/>
+                <ComboBoxItem Content="カラオケ・パーティ" FontSize="20"/>
+                <ComboBoxItem Content="バー・カクテル" FontSize="20"/>
+                <ComboBoxItem Content="ラーメン" FontSize="20"/>
+                <ComboBoxItem Content="お好み焼き・もんじゃ" FontSize="20"/>
+                <ComboBoxItem Content="カフェ・スイーツ" FontSize="20"/>
+                <ComboBoxItem Content="その他グルメ" FontSize="20"/>
+            </ComboBox>
+            <Button Content="検索" HorizontalAlignment="Left" Margin="495,0,0,21" VerticalAlignment="Bottom" Width="80" Height="37" Click="Button_Click"/>
+            <TextBox x:Name="keyWord" HorizontalAlignment="Left" Height="37" Margin="95,143,0,0" 
                          FontSize="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
-            <Label Content="都道府県" HorizontalAlignment="Left" Margin="292,25,0,0" 
+            <Label Content="都道府県" HorizontalAlignment="Left" Margin="95,25,0,0" 
                        FontSize="20" VerticalAlignment="Top"/>
-            <Label Content="市" HorizontalAlignment="Left" Margin="581,25,0,0" 
+            <Label Content="お店のジャンル" HorizontalAlignment="Left" Margin="389,25,0,0" 
+                       FontSize="20" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+            <Label Content="店名検索" HorizontalAlignment="Left" Margin="95,106,0,0" 
                        FontSize="20" VerticalAlignment="Top"/>
-            <Label Content="お店のジャンル" HorizontalAlignment="Left" Margin="581,106,0,0" 
-                       FontSize="20" VerticalAlignment="Top"/>
-            <Label Content="店名検索" HorizontalAlignment="Left" Margin="36,106,0,0" 
-                       FontSize="20" VerticalAlignment="Top"/>
-            <Label Content="地方選択" HorizontalAlignment="Left" Margin="36,25,0,0"
-                       FontSize="20" VerticalAlignment="Top" Height="37" Width="118"/>
 
         </Grid>
 

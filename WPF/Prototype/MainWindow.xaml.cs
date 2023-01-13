@@ -25,6 +25,7 @@ namespace Prototype {
         private NavigationService _navi;
         string name;
         string areacode;
+        string genrecode;
         //string large_area;
         public static readonly string url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=cf26ec85009189ff&large_area=";
         public static readonly string url2 = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=cf26ec85009189ff&";
@@ -86,6 +87,7 @@ namespace Prototype {
 
             //_navi.Navigate(_uriList[int.Parse((string)bt.Tag) - 1]);
 
+            //都道府県
             switch (largearea.SelectedIndex) {
                 case 0:
                     areacode = "Z041";
@@ -230,9 +232,63 @@ namespace Prototype {
                     break;
             }
 
-            name = "天武";
+            //ジャンル
+            switch (Storegenres.SelectedIndex) {
+                case 0:
+                    genrecode = "G001";//居酒屋
+                    break;
+                case 1:
+                    genrecode = "G002";//ダイニングバー・バル
+                    break;
+                case 2:
+                    genrecode = "G003";//創作料理
+                    break;
+                case 3:
+                    genrecode = "G004";//和食
+                    break;
+                case 4:
+                    genrecode = "G005";//洋食
+                    break;
+                case 5:
+                    genrecode = "G006";//イタリアン・フレンチ
+                    break;
+                case 6:
+                    genrecode = "G007";//中華
+                    break;
+                case 7:
+                    genrecode = "G008";//焼肉・ホルモン
+                    break;
+                case 8:
+                    genrecode = "G017";//韓国料理
+                    break;
+                case 9:
+                    genrecode = "G009";//アジア・エスニック料理
+                    break;
+                case 10:
+                    genrecode = "G010";//各国料理
+                    break;
+                case 11:
+                    genrecode = "G011";//カラオケ・パーティ
+                    break;
+                case 12:
+                    genrecode = "G012";//バー・カクテル
+                    break;
+                case 13:
+                    genrecode = "G013";//ラーメン
+                    break;
+                case 14:
+                    genrecode = "G016";//お好み焼き・もんじゃ
+                    break;
+                case 15:
+                    genrecode = "G014";//カフェ・スイーツ
+                    break;
+                case 16:
+                    genrecode = "G015";//その他グルメ
+                    break;
+            }
+
             //都道府県、店名
-            var cString = wc.DownloadString(url + areacode + "&name=" + keyWord.Text + "&format=json");
+            var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode + "&name=" + keyWord.Text + "&format=json");
             //都道府県だけ
             //var cString = wc.DownloadString(url + areacode + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
@@ -244,9 +300,9 @@ namespace Prototype {
             Storeimage.Source = image.Source;
             Storename.Content = cjson.results.shop[0].name;
             Storeaddress.Content = cjson.results.shop[0].address;
-            Storeaccess.Content = cjson.results.shop[0].access;
+            Storeaccess.Text = cjson.results.shop[0].access;
             Storeurls.Content = cjson.results.shop[0].urls.pc;
-            Storeopen.Content = cjson.results.shop[0].open;
+            Storeopen.Text = cjson.results.shop[0].open;
 
         }
 
