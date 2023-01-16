@@ -22,10 +22,12 @@ namespace Prototype {
     /// </summary>
     public partial class MainWindow : Window {
         Image image = new Image();
-        private NavigationService _navi;
-        string name;
+        //private NavigationService _navi;
         string areacode;
         string genrecode;
+        string bugetcode;
+        private Uri StartupUri;
+
         //string large_area;
         public static readonly string url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=cf26ec85009189ff&large_area=";
         public static readonly string url2 = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=cf26ec85009189ff&";
@@ -33,6 +35,10 @@ namespace Prototype {
         {
             InitializeComponent();
             //_navi = this.myFrame.NavigationService;
+            //Uri uri = new Uri("/Page1.xaml", UriKind.Relative);
+            //frame.Source = uri;
+            
+
         }
 
         //private List<Uri> _uriList = new List<Uri>() {
@@ -287,8 +293,52 @@ namespace Prototype {
                     break;
             }
 
+            //予算
+            switch (Budgets.SelectedIndex) {
+                case 0:
+                    bugetcode = "B009";//～500円
+                    break;
+                case 1:
+                    bugetcode = "B010";//501～1000円
+                    break;
+                case 2:
+                    bugetcode = "B011";//1001～1500
+                    break;
+                case 3:
+                    bugetcode = "B001";//1501～2000円
+                    break;
+                case 4:
+                    bugetcode = "B002";//2001～3000円
+                    break;
+                case 5:
+                    bugetcode = "B003";//3001～4000円
+                    break;
+                case 6:
+                    bugetcode = "B008";//4001～5000円
+                    break;
+                case 7:
+                    bugetcode = "B004";//5001～7000円
+                    break;
+                case 8:
+                    bugetcode = "B005";//7001～10000円
+                    break;
+                case 9:
+                    bugetcode = "B006";//10001～15000円
+                    break;
+                case 10:
+                    bugetcode = "B012";//15001～20000円
+                    break;
+                case 11:
+                    bugetcode = "B013";//20001～30000円
+                    break;
+                case 12:
+                    bugetcode = "B014";//30001円～
+                    break;
+            }
+
             //都道府県、店名
-            var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode + "&name=" + keyWord.Text + "&format=json");
+            var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode + 
+                "&name=" + keyWord.Text + "&buget="+ bugetcode +"&format=json");
             //都道府県だけ
             //var cString = wc.DownloadString(url + areacode + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
@@ -299,10 +349,21 @@ namespace Prototype {
             Storesmallarea.Content = cjson.results.shop[0].small_area.name;
             Storeimage.Source = image.Source;
             Storename.Content = cjson.results.shop[0].name;
-            Storeaddress.Content = cjson.results.shop[0].address;
+            Storeaddress.Text = cjson.results.shop[0].address;
             Storeaccess.Text = cjson.results.shop[0].access;
             Storeurls.Content = cjson.results.shop[0].urls.pc;
             Storeopen.Text = cjson.results.shop[0].open;
+
+            BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
+            image.Source = imagesourse2;
+            Storegenre2.Content = cjson.results.shop[1].genre.name;
+            Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
+            Storeimage2.Source = image.Source;
+            Storename2.Content = cjson.results.shop[1].name;
+            Storeaddress2.Text = cjson.results.shop[1].address;
+            Storeaccess2.Text = cjson.results.shop[1].access;
+            Storeurls2.Content = cjson.results.shop[1].urls.pc;
+            Storeopen2.Text = cjson.results.shop[1].open;
 
         }
 
