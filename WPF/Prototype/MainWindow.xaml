@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prototype"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000">
+        Title="MainWindow" Height="650" Width="1000" Loaded="Window_Loaded">
     <Grid>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
@@ -56,12 +55,14 @@
             </StackPanel>
         </ScrollViewer>
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="923*"/>
+                <ColumnDefinition Width="69*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
-
-            <ComboBox x:Name="largearea" Margin="95,61,0,98" 
-                      SelectionChanged="Prefecture_SelectionChanged"  FontSize="20" 
+            <ComboBox x:Name="largearea" Margin="95,61,0,98" FontSize="20"
                       d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="221">
                 <ComboBoxItem Content="北海道" FontSize="20"/>
                 <ComboBoxItem Content="青森" FontSize="20"/>
@@ -110,6 +111,7 @@
                 <ComboBoxItem Content="宮崎" FontSize="20"/>
                 <ComboBoxItem Content="鹿児島" FontSize="20"/>
                 <ComboBoxItem Content="沖縄" FontSize="20"/>
+                <ComboBoxItem Content="＜指定なし＞" FontSize="20"/>
 
             </ComboBox>
             <ComboBox x:Name="Storegenres" HorizontalAlignment="Left" Margin="389,62,0,0" 
@@ -120,6 +122,7 @@
                 <ComboBoxItem Content="和食" FontSize="20"/>
                 <ComboBoxItem Content="洋食" FontSize="20"/>
                 <ComboBoxItem Content="イタリアン・フレンチ" FontSize="20"/>
+                <ComboBoxItem Content="中華" FontSize="20"/>
                 <ComboBoxItem Content="焼肉・ホルモン" FontSize="20"/>
                 <ComboBoxItem Content="韓国料理" FontSize="20"/>
                 <ComboBoxItem Content="アジア・エスニック料理" FontSize="20"/>
@@ -130,19 +133,20 @@
                 <ComboBoxItem Content="お好み焼き・もんじゃ" FontSize="20"/>
                 <ComboBoxItem Content="カフェ・スイーツ" FontSize="20"/>
                 <ComboBoxItem Content="その他グルメ" FontSize="20"/>
+                <ComboBoxItem Content="＜指定なし＞" FontSize="20"/>
             </ComboBox>
             <Button Content="検索" HorizontalAlignment="Left" Margin="495,0,0,21"
                     VerticalAlignment="Bottom" Width="80" Height="37" Click="Button_Click"/>
-            <TextBox x:Name="keyWord" HorizontalAlignment="Left" Height="37" Margin="95,143,0,0" 
-                         FontSize="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+            <TextBox x:Name="keyWord" Height="37" Margin="95,143,428,0" 
+                         FontSize="25" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="keyWord_KeyDown"/>
             <Label Content="都道府県" HorizontalAlignment="Left" Margin="95,25,0,0" 
                        FontSize="20" VerticalAlignment="Top"/>
             <Label Content="お店のジャンル" HorizontalAlignment="Left" Margin="389,25,0,0" 
                        FontSize="20" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
             <Label Content="店名検索" HorizontalAlignment="Left" Margin="95,106,0,0" 
                        FontSize="20" VerticalAlignment="Top"/>
-            <Label Content="予算選択" HorizontalAlignment="Right" Margin="0,36,203,0" VerticalAlignment="Top" Height="26" Width="136"/>
-            <ComboBox x:Name="Budgets" HorizontalAlignment="Right" Margin="0,63,217,0" VerticalAlignment="Top" 
+            <Label Content="予算選択" HorizontalAlignment="Right" Margin="0,36,134,0" VerticalAlignment="Top" Height="26" Width="136"/>
+            <ComboBox x:Name="Budgets" HorizontalAlignment="Right" Margin="0,62,145,0" VerticalAlignment="Top" 
                        Width="125" Height="27">
                 <ComboBoxItem Content="～500円" FontSize="14"/>
                 <ComboBoxItem Content="501～1000円" FontSize="14"/>
@@ -157,6 +161,7 @@
                 <ComboBoxItem Content="15001～20000円" FontSize="14"/>
                 <ComboBoxItem Content="20001～30000円" FontSize="14"/>
                 <ComboBoxItem Content="30001円～" FontSize="14"/>
+                <ComboBoxItem Content="＜指定なし＞" FontSize="14"/>
             </ComboBox>
         </Grid>
     </Grid>

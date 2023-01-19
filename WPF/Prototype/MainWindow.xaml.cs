@@ -25,7 +25,7 @@ namespace Prototype {
         //private NavigationService _navi;
         string areacode;
         string genrecode;
-        string bugetcode;
+        string budgetcode; 
         private Uri StartupUri;
 
         //string large_area;
@@ -37,63 +37,15 @@ namespace Prototype {
             //_navi = this.myFrame.NavigationService;
             //Uri uri = new Uri("/Page1.xaml", UriKind.Relative);
             //frame.Source = uri;
+
+            //Page1 p1 = new Page1();
+            //p1.Show();
             
 
         }
 
-        //private List<Uri> _uriList = new List<Uri>() {
-        //    new Uri("Page1.xaml",UriKind.Relative)
-        //};
-
-        //private void myFrame_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    _navi.Navigate(_uriList[0]);    //初期ページの表示
-        //}
-
-        //private void prevButton_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //    int index = _uriList.FindIndex(p => p == _navi.CurrentSource) - 1;
-        //    _navi.Navigate(_uriList[index]);    //ページの移動
-
-        //}
-
-        //private void nextButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (_navi.CanGoForward)
-        //        _navi.GoForward();
-        //    else {
-        //        int index = _uriList.FindIndex(p => p == _navi.CurrentSource) + 1;
-        //        _navi.Navigate(_uriList[index]);    //ページの移動
-        //    }
-        //}
-
-        //private void myFrame_Navigated(object sender, NavigationEventArgs e)
-        //{
-        //    int index = _uriList.IndexOf(_navi.CurrentSource);
-        //    if (index <= 0)
-        //        prevButton.IsEnabled = false;
-        //    else
-        //        prevButton.IsEnabled = true;
-        //    if (index + 1 == _uriList.Count)
-        //        nextButton.IsEnabled = false;
-        //    else
-        //        nextButton.IsEnabled = true;
-        //}
-
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var wc = new WebClient() {
-                Encoding = Encoding.UTF8
-            };
-
-            //Button bt = (Button)sender;
-
-            //_navi.Navigate(_uriList[int.Parse((string)bt.Tag) - 1]);
-
-            //都道府県
+        //都道府県選択
+        private void StoreLargearea() {
             switch (largearea.SelectedIndex) {
                 case 0:
                     areacode = "Z041";
@@ -236,9 +188,14 @@ namespace Prototype {
                 case 46:
                     areacode = "Z098";
                     break;
+                case 47:
+                    areacode = "";//＜指定なし＞
+                    break;
             }
+        }
 
-            //ジャンル
+        //ジャンル選択
+        private void StoreGenres() {
             switch (Storegenres.SelectedIndex) {
                 case 0:
                     genrecode = "G001";//居酒屋
@@ -291,96 +248,123 @@ namespace Prototype {
                 case 16:
                     genrecode = "G015";//その他グルメ
                     break;
+                case 17:
+                    genrecode = "";//＜指定なし＞
+                    break;
             }
+        }
 
-            //予算
+        //予算選択
+        private void StoreBudgets() {
             switch (Budgets.SelectedIndex) {
                 case 0:
-                    bugetcode = "B009";//～500円
+                    budgetcode = "B009";//～500円
                     break;
                 case 1:
-                    bugetcode = "B010";//501～1000円
+                    budgetcode = "B010";//501～1000円
                     break;
                 case 2:
-                    bugetcode = "B011";//1001～1500
+                    budgetcode = "B011";//1001～1500
                     break;
                 case 3:
-                    bugetcode = "B001";//1501～2000円
+                    budgetcode = "B001";//1501～2000円
                     break;
                 case 4:
-                    bugetcode = "B002";//2001～3000円
+                    budgetcode = "B002";//2001～3000円
                     break;
                 case 5:
-                    bugetcode = "B003";//3001～4000円
+                    budgetcode = "B003";//3001～4000円
                     break;
                 case 6:
-                    bugetcode = "B008";//4001～5000円
+                    budgetcode = "B008";//4001～5000円
                     break;
                 case 7:
-                    bugetcode = "B004";//5001～7000円
+                    budgetcode = "B004";//5001～7000円
                     break;
                 case 8:
-                    bugetcode = "B005";//7001～10000円
+                    budgetcode = "B005";//7001～10000円
                     break;
                 case 9:
-                    bugetcode = "B006";//10001～15000円
+                    budgetcode = "B006";//10001～15000円
                     break;
                 case 10:
-                    bugetcode = "B012";//15001～20000円
+                    budgetcode = "B012";//15001～20000円
                     break;
                 case 11:
-                    bugetcode = "B013";//20001～30000円
+                    budgetcode = "B013";//20001～30000円
                     break;
                 case 12:
-                    bugetcode = "B014";//30001円～
+                    budgetcode = "B014";//30001円～
+                    break;
+                case 13:
+                    budgetcode = "";//＜指定なし＞
                     break;
             }
+        }
 
-            //都道府県、店名
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var wc = new WebClient() {
+                Encoding = Encoding.UTF8
+            };
+
+            //都道府県
+            StoreLargearea();
+            //ジャンル
+            StoreGenres();
+            //予算
+            StoreBudgets();
+
+            //都道府県、ジャンル、店名、
             var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode + 
-                "&name=" + keyWord.Text + "&buget="+ bugetcode +"&format=json");
-            //都道府県だけ
-            //var cString = wc.DownloadString(url + areacode + "&format=json");
+                "&name=" + keyWord.Text + "&budget=" + budgetcode + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
 
-            BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
-            image.Source = imagesourse;
-            Storegenre.Content = cjson.results.shop[0].genre.name;
-            Storesmallarea.Content = cjson.results.shop[0].small_area.name;
-            Storeimage.Source = image.Source;
-            Storename.Content = cjson.results.shop[0].name;
-            Storeaddress.Text = cjson.results.shop[0].address;
-            Storeaccess.Text = cjson.results.shop[0].access;
-            Storeurls.Content = cjson.results.shop[0].urls.pc;
-            Storeopen.Text = cjson.results.shop[0].open;
+            try {
 
-            BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
-            image.Source = imagesourse2;
-            Storegenre2.Content = cjson.results.shop[1].genre.name;
-            Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
-            Storeimage2.Source = image.Source;
-            Storename2.Content = cjson.results.shop[1].name;
-            Storeaddress2.Text = cjson.results.shop[1].address;
-            Storeaccess2.Text = cjson.results.shop[1].access;
-            Storeurls2.Content = cjson.results.shop[1].urls.pc;
-            Storeopen2.Text = cjson.results.shop[1].open;
+                BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
+                image.Source = imagesourse;
+                Storegenre.Content = cjson.results.shop[0].genre.name;
+                Storesmallarea.Content = cjson.results.shop[0].small_area.name;
+                Storeimage.Source = image.Source;
+                Storename.Content = cjson.results.shop[0].name;
+                Storeaddress.Text = cjson.results.shop[0].address;
+                Storeaccess.Text = cjson.results.shop[0].access;
+                Storeurls.Content = cjson.results.shop[0].urls.pc;
+                Storeopen.Text = cjson.results.shop[0].open;
 
-        }
 
-        private void Region_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+                BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
+                image.Source = imagesourse2;
+                Storegenre2.Content = cjson.results.shop[1].genre.name;
+                Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
+                Storeimage2.Source = image.Source;
+                Storename2.Content = cjson.results.shop[1].name;
+                Storeaddress2.Text = cjson.results.shop[1].address;
+                Storeaccess2.Text = cjson.results.shop[1].access;
+                Storeurls2.Content = cjson.results.shop[1].urls.pc;
+                Storeopen2.Text = cjson.results.shop[1].open;
 
-        }
-
-        private void Prefecture_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Storebutton_Click(object sender, RoutedEventArgs e)
         {
             
             System.Diagnostics.Process.Start("");
+        }
+
+        private void keyWord_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
