@@ -26,7 +26,10 @@ namespace Prototype {
         string areacode;
         string genrecode;
         string budgetcode; 
-        private Uri StartupUri;
+        string prefecturaloffice;
+        public static string StartupUri;
+
+        Page1 p1 = new Page1();
 
         //string large_area;
         public static readonly string url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=cf26ec85009189ff&large_area=";
@@ -315,7 +318,7 @@ namespace Prototype {
             //予算
             StoreBudgets();
 
-            //都道府県、ジャンル、店名、
+            //都道府県、ジャンル、店名、予算
             var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode + 
                 "&name=" + keyWord.Text + "&budget=" + budgetcode + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
@@ -353,13 +356,15 @@ namespace Prototype {
 
         private void Storebutton_Click(object sender, RoutedEventArgs e)
         {
-            
-            System.Diagnostics.Process.Start("");
-        }
+            var wc = new WebClient() {
+                Encoding = Encoding.UTF8
+            };
+            var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode +
+                "&name=" + keyWord.Text + "&budget=" + budgetcode + "&format=json");
+            var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
+            StartupUri = cjson.results.shop[0].urls.pc;
 
-        private void keyWord_KeyDown(object sender, KeyEventArgs e)
-        {
-            
+            //p1.Show();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

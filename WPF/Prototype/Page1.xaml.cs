@@ -23,7 +23,12 @@ namespace Prototype {
         public Page1()
         {
             InitializeComponent();
-            //_navi = this.myFrame.NavigationService;
+        }
+
+        private void WebView2_Loaded(object sender, RoutedEventArgs e)
+        {
+            var shop = MainWindow.StartupUri;
+            web1.Source = new Uri(shop);
         }
     }
 }
