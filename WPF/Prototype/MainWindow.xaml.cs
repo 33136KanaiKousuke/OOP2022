@@ -323,35 +323,41 @@ namespace Prototype {
                 "&name=" + keyWord.Text + "&budget=" + budgetcode + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
 
-            try {
-
-                BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
-                image.Source = imagesourse;
-                Storegenre.Content = cjson.results.shop[0].genre.name;
-                Storesmallarea.Content = cjson.results.shop[0].small_area.name;
-                Storeimage.Source = image.Source;
-                Storename.Content = cjson.results.shop[0].name;
-                Storeaddress.Text = cjson.results.shop[0].address;
-                Storeaccess.Text = cjson.results.shop[0].access;
-                Storeurls.Content = cjson.results.shop[0].urls.pc;
-                Storeopen.Text = cjson.results.shop[0].open;
-
-
-                BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
-                image.Source = imagesourse2;
-                Storegenre2.Content = cjson.results.shop[1].genre.name;
-                Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
-                Storeimage2.Source = image.Source;
-                Storename2.Content = cjson.results.shop[1].name;
-                Storeaddress2.Text = cjson.results.shop[1].address;
-                Storeaccess2.Text = cjson.results.shop[1].access;
-                Storeurls2.Content = cjson.results.shop[1].urls.pc;
-                Storeopen2.Text = cjson.results.shop[1].open;
-
+            if (cjson.results.shop[0] == null) {
+                return;
             }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+            else {
+                try {
+
+                    BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
+                    image.Source = imagesourse;
+                    Storegenre.Content = cjson.results.shop[0].genre.name;
+                    Storesmallarea.Content = cjson.results.shop[0].small_area.name;
+                    Storeimage.Source = image.Source;
+                    Storename.Content = cjson.results.shop[0].name;
+                    Storeaddress.Text = cjson.results.shop[0].address;
+                    Storeaccess.Text = cjson.results.shop[0].access;
+                    Storecatch.Text = cjson.results.shop[0].genre._catch;
+                    Storeopen.Text = cjson.results.shop[0].open;
+
+
+                    BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
+                    image.Source = imagesourse2;
+                    Storegenre2.Content = cjson.results.shop[1].genre.name;
+                    Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
+                    Storeimage2.Source = image.Source;
+                    Storename2.Content = cjson.results.shop[1].name;
+                    Storeaddress2.Text = cjson.results.shop[1].address;
+                    Storeaccess2.Text = cjson.results.shop[1].access;
+                    Storeopen2.Text = cjson.results.shop[1].open;
+
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
             }
+
+            
         }
 
         private void Storebutton_Click(object sender, RoutedEventArgs e)
@@ -362,14 +368,49 @@ namespace Prototype {
             var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode +
                 "&name=" + keyWord.Text + "&budget=" + budgetcode + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
+
             StartupUri = cjson.results.shop[0].urls.pc;
 
-            //p1.Show();
+            p1.Show();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //var wc = new WebClient() {
+            //    Encoding = Encoding.UTF8
+            //};
 
+            //var cString = wc.DownloadString(url2 + "lat=36.3221&lng=139.0134&range=5&order=1&format=json");
+            //var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
+
+            //try {
+
+            //    BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
+            //    image.Source = imagesourse;
+            //    Storegenre.Content = cjson.results.shop[0].genre.name;
+            //    Storesmallarea.Content = cjson.results.shop[0].small_area.name;
+            //    Storeimage.Source = image.Source;
+            //    Storename.Content = cjson.results.shop[0].name;
+            //    Storeaddress.Text = cjson.results.shop[0].address;
+            //    Storeaccess.Text = cjson.results.shop[0].access;
+            //    Storecatch.Text = cjson.results.shop[0].genre._catch;
+            //    Storeopen.Text = cjson.results.shop[0].open;
+
+
+            //    BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
+            //    image.Source = imagesourse2;
+            //    Storegenre2.Content = cjson.results.shop[1].genre.name;
+            //    Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
+            //    Storeimage2.Source = image.Source;
+            //    Storename2.Content = cjson.results.shop[1].name;
+            //    Storeaddress2.Text = cjson.results.shop[1].address;
+            //    Storeaccess2.Text = cjson.results.shop[1].access;
+            //    Storeopen2.Text = cjson.results.shop[1].open;
+
+            //}
+            //catch (Exception ex) {
+            //    MessageBox.Show(ex.Message);
+            //}
         }
     }
 }

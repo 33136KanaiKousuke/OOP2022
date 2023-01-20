@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:Prototype"
         xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Class="Prototype.Page1"
         mc:Ignorable="d"
-        Title="Page1" Height="650" Width="1000">
+        Title="Page1" Height="650" Width="1000" Closing="Window_Closing">
     <Grid>
 
-        <Wpf:WebView2 x:Name="web1" Loaded="WebView2_Loaded"/>
+        <Wpf:WebView2 x:Name="web1" IsVisibleChanged="web1_IsVisibleChanged"/>
 
     </Grid>
 </Window>

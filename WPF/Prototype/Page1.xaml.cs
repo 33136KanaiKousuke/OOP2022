@@ -25,10 +25,16 @@ namespace Prototype {
             InitializeComponent();
         }
 
-        private void WebView2_Loaded(object sender, RoutedEventArgs e)
+        private void web1_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             var shop = MainWindow.StartupUri;
             web1.Source = new Uri(shop);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }
