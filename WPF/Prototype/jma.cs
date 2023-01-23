@@ -17,6 +17,7 @@ namespace Prototype {
         public string results_returned { get; set; }
         public int results_start { get; set; }
         public Shop[] shop { get; set; }
+        public Error[] error { get; set; }
     }
 
     public class Shop {
@@ -133,6 +134,12 @@ namespace Prototype {
 
     public class Urls {
         public string pc { get; set; }
+    }
+
+    //エラー
+    public class Error {
+        public int code { get; set; }
+        public string message { get; set; }
     }
 
 }

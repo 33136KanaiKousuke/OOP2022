@@ -307,6 +307,7 @@ namespace Prototype {
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             var wc = new WebClient() {
                 Encoding = Encoding.UTF8
             };
@@ -319,45 +320,49 @@ namespace Prototype {
             StoreBudgets();
 
             //都道府県、ジャンル、店名、予算
-            var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode + 
+            var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode +
                 "&name=" + keyWord.Text + "&budget=" + budgetcode + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
 
-            if (cjson.results.shop[0] == null) {
+            try {
+                
+                //if (cjson.results.error[0].code == 3000) {
+                //    return;
+                //}
+            }
+            catch (NullReferenceException) {
                 return;
             }
-            else {
-                try {
 
-                    BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
-                    image.Source = imagesourse;
-                    Storegenre.Content = cjson.results.shop[0].genre.name;
-                    Storesmallarea.Content = cjson.results.shop[0].small_area.name;
-                    Storeimage.Source = image.Source;
-                    Storename.Content = cjson.results.shop[0].name;
-                    Storeaddress.Text = cjson.results.shop[0].address;
-                    Storeaccess.Text = cjson.results.shop[0].access;
-                    Storecatch.Text = cjson.results.shop[0].genre._catch;
-                    Storeopen.Text = cjson.results.shop[0].open;
+            try {
+
+                BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
+                image.Source = imagesourse;
+                Storegenre.Content = cjson.results.shop[0].genre.name;
+                Storesmallarea.Content = cjson.results.shop[0].small_area.name;
+                Storeimage.Source = image.Source;
+                Storename.Content = cjson.results.shop[0].name;
+                Storeaddress.Text = cjson.results.shop[0].address;
+                Storeaccess.Text = cjson.results.shop[0].access;
+                Storecatch.Text = cjson.results.shop[0].genre._catch;
+                Storeopen.Text = cjson.results.shop[0].open;
 
 
-                    BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
-                    image.Source = imagesourse2;
-                    Storegenre2.Content = cjson.results.shop[1].genre.name;
-                    Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
-                    Storeimage2.Source = image.Source;
-                    Storename2.Content = cjson.results.shop[1].name;
-                    Storeaddress2.Text = cjson.results.shop[1].address;
-                    Storeaccess2.Text = cjson.results.shop[1].access;
-                    Storeopen2.Text = cjson.results.shop[1].open;
+                BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
+                image.Source = imagesourse2;
+                Storegenre2.Content = cjson.results.shop[1].genre.name;
+                Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
+                Storeimage2.Source = image.Source;
+                Storename2.Content = cjson.results.shop[1].name;
+                Storeaddress2.Text = cjson.results.shop[1].address;
+                Storeaccess2.Text = cjson.results.shop[1].access;
+                Storeopen2.Text = cjson.results.shop[1].open;
 
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
             }
-
-            
+            catch (Exception ex) {
+                //MessageBox.Show(ex.Message);
+                return;
+            }
         }
 
         private void Storebutton_Click(object sender, RoutedEventArgs e)
@@ -368,49 +373,54 @@ namespace Prototype {
             var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode +
                 "&name=" + keyWord.Text + "&budget=" + budgetcode + "&format=json");
             var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
-
             StartupUri = cjson.results.shop[0].urls.pc;
+
+            //var jString = wc.DownloadString(url2 + "lat=36.3221&lng=139.0134&range=5&order=1&format=json");
+            //var jjson = JsonConvert.DeserializeObject<Rootobject>(cString);
 
             p1.Show();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //var wc = new WebClient() {
-            //    Encoding = Encoding.UTF8
-            //};
+            var wc = new WebClient() {
+                Encoding = Encoding.UTF8
+            };
 
-            //var cString = wc.DownloadString(url2 + "lat=36.3221&lng=139.0134&range=5&order=1&format=json");
-            //var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
+            areacode = "Z017";//初期値群馬
 
-            //try {
+            var cString = wc.DownloadString(url + areacode + "&genre=" + genrecode +
+                "&name=" + keyWord.Text + "&budget=" + budgetcode + "&format=json");
+            var cjson = JsonConvert.DeserializeObject<Rootobject>(cString);
 
-            //    BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
-            //    image.Source = imagesourse;
-            //    Storegenre.Content = cjson.results.shop[0].genre.name;
-            //    Storesmallarea.Content = cjson.results.shop[0].small_area.name;
-            //    Storeimage.Source = image.Source;
-            //    Storename.Content = cjson.results.shop[0].name;
-            //    Storeaddress.Text = cjson.results.shop[0].address;
-            //    Storeaccess.Text = cjson.results.shop[0].access;
-            //    Storecatch.Text = cjson.results.shop[0].genre._catch;
-            //    Storeopen.Text = cjson.results.shop[0].open;
+            try {
+
+                BitmapImage imagesourse = new BitmapImage(new Uri(cjson.results.shop[0].photo.pc.l));
+                image.Source = imagesourse;
+                Storegenre.Content = cjson.results.shop[0].genre.name;
+                Storesmallarea.Content = cjson.results.shop[0].small_area.name;
+                Storeimage.Source = image.Source;
+                Storename.Content = cjson.results.shop[0].name;
+                Storeaddress.Text = cjson.results.shop[0].address;
+                Storeaccess.Text = cjson.results.shop[0].access;
+                Storecatch.Text = cjson.results.shop[0].genre._catch;
+                Storeopen.Text = cjson.results.shop[0].open;
 
 
-            //    BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
-            //    image.Source = imagesourse2;
-            //    Storegenre2.Content = cjson.results.shop[1].genre.name;
-            //    Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
-            //    Storeimage2.Source = image.Source;
-            //    Storename2.Content = cjson.results.shop[1].name;
-            //    Storeaddress2.Text = cjson.results.shop[1].address;
-            //    Storeaccess2.Text = cjson.results.shop[1].access;
-            //    Storeopen2.Text = cjson.results.shop[1].open;
+                BitmapImage imagesourse2 = new BitmapImage(new Uri(cjson.results.shop[1].photo.pc.l));
+                image.Source = imagesourse2;
+                Storegenre2.Content = cjson.results.shop[1].genre.name;
+                Storesmallarea2.Content = cjson.results.shop[1].small_area.name;
+                Storeimage2.Source = image.Source;
+                Storename2.Content = cjson.results.shop[1].name;
+                Storeaddress2.Text = cjson.results.shop[1].address;
+                Storeaccess2.Text = cjson.results.shop[1].access;
+                Storeopen2.Text = cjson.results.shop[1].open;
 
-            //}
-            //catch (Exception ex) {
-            //    MessageBox.Show(ex.Message);
-            //}
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -65,7 +65,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
-            <ComboBox x:Name="largearea" Margin="95,61,0,98" FontSize="20"
+            <ComboBox x:Name="largearea" Margin="95,61,0,98" FontSize="20" Text="群馬"
                       d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="221">
                 <ComboBoxItem Content="北海道" FontSize="20"/>
                 <ComboBoxItem Content="青森" FontSize="20"/>
